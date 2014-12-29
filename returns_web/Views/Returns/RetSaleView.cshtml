@@ -1,0 +1,44 @@
+﻿@model IEnumerable<returns_web.Models.Retsale>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+
+
+       <a  id="retSaleAdd" href="#">إضافة مبيعات</a>
+
+<table id="retSaleTbl" class="table table-striped table-bordered table-hover" style="direction:rtl">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.taxrateid)</th>
+        <th>
+            @Html.DisplayNameFor(model => model.saleval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.saletax)
+        </th>
+    </tr>
+    @foreach(var item in Model)
+    { 
+        @Html.Partial("RetSaleSingle",item)
+    }
+</table>
+
+
+@section Scripts {
+
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $("#retSaleAdd").on("click", function () {
+            console.log("click");
+
+
+
+                $.get("Restsales/Create",function(data){
+                    $("retSaleTbl").append(data);
+                });
+            });
+        });
+    </script>
+}
+

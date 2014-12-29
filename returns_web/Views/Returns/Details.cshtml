@@ -1,0 +1,106 @@
+﻿@model returns_web.Models.Returns
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Returns</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.officeid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.officeid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.returncode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.returncode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.taxyrmo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.taxyrmo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.transdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.transdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.saleltc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.saleltc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.purctdt2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.purctdt2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nettaxpy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nettaxpy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.targetoffid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.targetoffid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.doclocnum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.doclocnum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.moddate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.moddate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,50 @@
+﻿@model returns_web.Models.Master
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Master</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.officeid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.officeid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.regname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.regname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tradename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tradename)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.regdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.regdate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.rin }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
