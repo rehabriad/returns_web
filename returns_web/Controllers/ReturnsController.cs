@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -88,6 +90,23 @@ namespace returns_web.Controllers
         {
             if (ModelState.IsValid)
             {
+                Returns existing = db.Returns.Find(returns.Id);
+                if (existing == null)
+                    return RedirectToAction("Index");
+                ((IObjectContextAdapter)db).ObjectContext.Detach(existing);
+                //db.Returns.AddOrUpdate(returns);
+                
+                foreach (var retsale in returns.retsale)
+                {
+                    if (returns.Id != retsale.returnsid)
+                    {
+                        retsale.returnsid = returns.Id;
+                        db.Entry(retsale).State = EntityState.Added;
+                    }
+                    else
+                        db.Entry(retsale).State = EntityState.Modified;
+
+                }
                 db.Entry(returns).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

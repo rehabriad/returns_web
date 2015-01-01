@@ -7,6 +7,7 @@
     <tr class="retSaleRow">
         <td>
             @Html.Hidden("retsale["+ @id + "].Id", Model.Id)
+            @Html.Hidden("retsale[" + @id + "].returnsid", Model.returnsid)
             <div class="form-group">
 
                 <div class="col-md-10">
