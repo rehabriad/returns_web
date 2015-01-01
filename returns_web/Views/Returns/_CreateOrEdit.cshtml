@@ -1,0 +1,135 @@
+﻿@model returns_web.Models.Returns
+
+@{
+    ViewBag.Title = "Create";
+   //returns_web.Models.Retsale retsale = new returns_web.Models.Retsale();
+   //returns_web.Models.Retpurch retpurch = new returns_web.Models.Retpurch();
+    
+
+    }
+<div style ="direction:rtl">
+    <h2>إقرار مبيعات</h2>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-horizontal" style="direction:rtl">
+            <table style="direction:rtl">
+                <tr>
+                    <td>
+                        <div class="form-group">
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.rin, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.rin, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.rin, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </div>
+                    </td>
+                    @*<div class="form-group">
+                            @Html.LabelFor(model => model.retsale, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.retsale, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.retsale, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
+                    <td>
+                        <div class="form-group">
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.taxyrmo, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.taxyrmo, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.taxyrmo, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.transdate, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.transdate, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.transdate, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            @Html.Partial("RetSaleList", Model.retsale)
+
+            @*@Html.Partial("RetPurchList", Model.retpurch)*@
+
+            @*@Model.retsale.Add(retsale)*@
+
+            <table style="direction:rtl">
+                <tr>
+                    <td>
+                        <div class="form-group">
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.saleltc, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.saleltc, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.saleltc, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.purctdt2, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.purctdt2, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.purctdt2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.nettaxpy, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.nettaxpy, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.nettaxpy, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </div>
+                    </td>
+                    <td>
+
+                        <div class="form-group">
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.doclocnum, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.doclocnum, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.doclocnum, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </div>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="حفظ" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+
+
+

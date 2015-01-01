@@ -8,8 +8,16 @@ using System.Web;
 namespace returns_web.Models
 {
     public enum taxrate { محلية = 14, صادرات }
+
     public class Retpurch
     {
+
+        public Retpurch()
+        {
+            moddate = DateTime.Now;
+            officeid = 83;
+            Id = Guid.NewGuid();
+        }
         public Guid Id { get; set; }
         public int officeid { get; set; }
 

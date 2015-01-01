@@ -14,6 +14,7 @@ namespace returns_web.Models
         {
             moddate = DateTime.Now;
             officeid = 83;
+            Id = Guid.NewGuid();
         }
         public Guid Id { get; set; }
         public int officeid { get; set; }

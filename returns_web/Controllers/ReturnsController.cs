@@ -47,14 +47,15 @@ namespace returns_web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,officeid,rin,returncode,taxyrmo,transdate,saleltc,purctdt2,nettaxpy,targetoffid,doclocnum,moddate")] Returns returns,Retsale retsale)
+        public ActionResult Create([Bind(Include = "Id,officeid,rin,returncode,taxyrmo,transdate,saleltc,purctdt2,nettaxpy,targetoffid,doclocnum,moddate,retsale,retpurch")] Returns returns)
         {
             if (ModelState.IsValid)
             {
                 returns.Id = Guid.NewGuid();
                 returns.moddate = DateTime.Now;
                 returns.returncode = 1;
-                returns.retsale.Add(retsale);
+                
+                //returns.retsale.a(retsale);
                 db.Returns.Add(returns);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -83,7 +84,7 @@ namespace returns_web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,officeid,rin,returncode,taxyrmo,transdate,saleltc,purctdt2,nettaxpy,targetoffid,doclocnum,moddate")] Returns returns)
+        public ActionResult Edit([Bind(Include = "Id,officeid,rin,returncode,taxyrmo,transdate,saleltc,purctdt2,nettaxpy,targetoffid,doclocnum,moddate,retsale,retpurch")] Returns returns)
         {
             if (ModelState.IsValid)
             {
@@ -129,10 +130,11 @@ namespace returns_web.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult RetSaleSingle()
+        public ActionResult AddRetSale(int rowCount=0)
         {
             var model = new Retsale();
-            return View( model);
+            ViewBag.RowCount = rowCount;
+            return View("_RetSaleSingle", model);
         }
     }
 }

@@ -36,10 +36,10 @@ namespace returns_web.Controllers
         }
 
         // GET: Retsales/Create
+
         public ActionResult Create()
         {
-            var model = new Retsale();
-            return View("~Views/Returns/RetSaleSingle.cshtml",model);
+            return View();
         }
 
         // POST: Retsales/Create
