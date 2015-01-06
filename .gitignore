@@ -46,6 +46,7 @@ logfile.txt
 packages/*
 !packages/repositories.config
 Web/logfile.txt
-Web/logfile.txt
 returns_web/App_Data/*
 
+returns_web/App_Data/retContext-20141225103047.mdf
+returns_web/App_Data/retContext-20141225103047_log.ldf
