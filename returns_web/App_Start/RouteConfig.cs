@@ -16,7 +16,7 @@ namespace returns_web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Returns", action = "Create", id = UrlParameter.Optional }
+                defaults: new { controller = "Returns", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
