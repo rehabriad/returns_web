@@ -1,9 +1,4 @@
-﻿//var rowCount = $(".retSaleRow").length;
-//$(document).ready(function () {
-//    $("#retSaleAdd").on("click", function () {
-//        $.get('@Url.Action("RetSaleSingle","returns")', { rowCount: rowCount }, function (data) {
-//            $("#retSaleTbl").append(data);
-//            rowCount++;
-//        });
-//    });
-//});
+﻿$('#myTab a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+})

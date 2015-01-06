@@ -7,6 +7,8 @@
     
 
     }
+
+
 <div style ="direction:rtl">
     <h2>إقرار مبيعات</h2>
     </div>
@@ -30,13 +32,7 @@
                             @Html.LabelFor(model => model.rin, htmlAttributes: new { @class = "control-label col-md-2" })
                         </div>
                     </td>
-                    @*<div class="form-group">
-                            @Html.LabelFor(model => model.retsale, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.retsale, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.retsale, "", new { @class = "text-danger" })
-                            </div>
-                        </div>*@
+                   
                     <td>
                         <div class="form-group">
 
@@ -61,11 +57,26 @@
                     </td>
                 </tr>
             </table>
-            @Html.Partial("RetSaleList", Model.retsale)
 
-            @*@Html.Partial("RetPurchList", Model.retpurch)*@
+            <div role="tabpanel">
 
-            @*@Model.retsale.Add(retsale)*@
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs nav-justified" role="tablist">
+                    <li role="presentation" class="active"><a href="#retsale" aria-controls="home" role="tab" data-toggle="tab" style="font-weight: 700;font-size:large">المبيعات</a></li>
+                    <li role="presentation"><a href="#retpurch" aria-controls="profile" role="tab" data-toggle="tab" style="font-weight: 700;font-size:large">المشتريات</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content" >
+                    <div role="tabpanel" class="tab-pane active" id="retsale" >@Html.Partial("RetSaleList", Model.retsale)</div>
+                    <div role="tabpanel" class="tab-pane" id="retpurch" >@Html.Partial("RetPurchList", Model.retpurch)</div>
+
+                </div>
+
+            </div>
+
+
+       <br /><br />
 
             <table style="direction:rtl">
                 <tr>

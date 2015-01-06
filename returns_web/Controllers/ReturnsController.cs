@@ -107,6 +107,17 @@ namespace returns_web.Controllers
                         db.Entry(retsale).State = EntityState.Modified;
 
                 }
+                foreach (var retpurch in returns.retpurch)
+                {
+                    if (returns.Id != retpurch.returnsid)
+                    {
+                        retpurch.returnsid = returns.Id;
+                        db.Entry(retpurch).State = EntityState.Added;
+                    }
+                    else
+                        db.Entry(retpurch).State = EntityState.Modified;
+
+                }
                 db.Entry(returns).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -154,6 +165,12 @@ namespace returns_web.Controllers
             var model = new Retsale();
             ViewBag.RowCount = rowCount;
             return View("_RetSaleSingle", model);
+        }
+        public ActionResult AddPurchSale(int prowCount = 0)
+        {
+            var model = new Retpurch();
+            ViewBag.RowCount = prowCount;
+            return View("_RetPurchSingle", model);
         }
     }
 }

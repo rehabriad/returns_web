@@ -14,6 +14,7 @@ namespace returns_web.Models
             retsale = new List<Retsale>();
             retpurch = new List<Retpurch>();
             moddate = DateTime.Now;
+            transdate=DateTime.Now;
             returncode = 1;
         }
         public Guid Id { get; set; }
@@ -26,9 +27,11 @@ namespace returns_web.Models
         public int returncode  { get; set; }
          
         [Display(Name = "الفترة الضريبية")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/00}", ApplyFormatInEditMode = true)] 
         public DateTime taxyrmo { get; set; }
        
         [Display(Name = "تاريخ المعاملة")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)] 
         public DateTime transdate { get; set; }
          [Display(Name = "المبيعات")]
         public decimal saleltc { get; set; }

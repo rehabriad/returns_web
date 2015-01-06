@@ -260,6 +260,7 @@
     <Content Include="Views\Returns\RetPurchList.cshtml" />
     <Content Include="Views\Returns\_RetSaleSingle.cshtml" />
     <Content Include="Views\Returns\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Returns\_RetPurchSingle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,38 @@
+﻿@model returns_web.Models.Retpurch
+@{
+    Layout = null;
+    int id = int.Parse(ViewBag.RowCount.ToString());
+    
+}
+    <tr class="retPurchRow">
+        <td>
+            @Html.Hidden("retpurch[" + @id + "].Id", Model.Id)
+            @Html.Hidden("retpurch[" + @id + "].returnsid", Model.returnsid)
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.taxrate, new { id = "retpurch[" + @id + "].taxrate", Name = "retpurch[" + @id + "].taxrate", htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.taxrate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBox("retpurch[" + @id + "].purchval", Model.purchval.ToString(), new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.purchval, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBox("retpurch[" + @id + "].purchtax", Model.purchtax.ToString(), new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.purchtax, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+    </tr>
+

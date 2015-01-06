@@ -3,91 +3,84 @@
 @{
     ViewBag.Title = "Index";
 }
+<style>
+    th{
+       text-align:center;
+       font-weight:700;
 
-<h2>Index</h2>
+    }
+    </style>
+<div style="direction:rtl">
+    <h2>قائمة إقرارات المبيعات</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.officeid)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.rin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.returncode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.taxyrmo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.transdate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.saleltc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.purctdt2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nettaxpy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.targetoffid)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.doclocnum)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.moddate)
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @Html.ActionLink("إضافة إقرار مبيعات", "Create")
+    </p>
+</div>
+    <table class="table table-striped table-bordered table-hover" style="direction:rtl">
+        <tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.officeid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.rin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.returncode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.taxyrmo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.transdate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.saleltc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.purctdt2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nettaxpy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.targetoffid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.doclocnum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.moddate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+            <th>
+                @Html.DisplayNameFor(model => model.rin)
+            </th>
 
-</table>
+            <th>
+                @Html.DisplayNameFor(model => model.taxyrmo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.transdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.saleltc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.purctdt2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nettaxpy)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.doclocnum)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.rin)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.taxyrmo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.transdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.saleltc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.purctdt2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nettaxpy)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.doclocnum)
+                </td>
+
+                <td>
+                    @Html.ActionLink("تعديل", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("تفاصيل", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("إلغاء", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
