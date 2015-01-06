@@ -10,7 +10,8 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
-    var rowCount = $(".retSaleRow").length;
+        var rowCount = $(".retSaleRow").length;
+        var prowCount = $(".retPurchRow").length;
 $(document).ready(function () {
     $("#retSaleAdd").on("click", function () {
         $.get('@Url.Action("AddRetSale", "returns")', { rowCount: rowCount }, function (data) {
@@ -18,6 +19,13 @@ $(document).ready(function () {
             rowCount++;
         });
     });
+    $("#retPurchAdd").on("click", function () {
+
+        $.get('@Url.Action("AddPurchSale", "returns")', { prowCount: prowCount }, function (data) {
+            $("#retPurchTbl").append(data);
+            prowCount++;
+        });
     });
+});
     </script>
 }

@@ -1,42 +1,38 @@
-﻿@model returns_web.Models.Retpurch
-
-<table class="table table-striped table-bordered table-hover" style="direction:rtl">
+﻿@using System.Web.UI.WebControls
+@model IEnumerable<returns_web.Models.Retpurch>
+@{
+    var i = 0;
+}
+<style>
+    th {
+        text-align: center;
+          font-weight:700
+    }
+</style>
+<table id="retPurchTbl" class="table table-striped table-bordered table-hover" style="direction:rtl">
     <tr>
         <th>@Html.DisplayNameFor(model => model.taxrate)</th>
         <th>
-            @Html.LabelFor(model => model.purchval, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.DisplayNameFor(model => model.purchval)
         </th>
         <th>
-            @Html.LabelFor(model => model.purchtax, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.DisplayNameFor(model => model.purchtax)
         </th>
     </tr>
+
+    @foreach (var item in Model)
+    {
+        ViewBag.Rowcount = i;
+        @Html.Partial("_RetPurchSingle", item)
+        i++;
+    }
+
+
+</table>
+<table>
     <tr>
         <td>
-            <div class="form-group">
-
-                <div class="col-md-10">
-                    @Html.EnumDropDownListFor(model => model.taxrate, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.taxrate, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </td>
-        <td>
-            <div class="form-group">
-
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.purchval, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.purchval, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </td>
-        <td>
-            <div class="form-group">
-
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.purchtax, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.purchtax, "", new { @class = "text-danger" })
-                </div>
-            </div>
+            <a id="retPurchAdd" href="#" style="font-weight: 700">إضافة مشتريات</a>
         </td>
     </tr>
 </table>
