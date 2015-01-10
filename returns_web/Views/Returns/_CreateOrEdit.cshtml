@@ -37,7 +37,7 @@
                         <div class="form-group">
 
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.taxyrmo, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.taxyrmo, new { htmlAttributes = new { @class = "form-control", @data_val = "false" } })
                                 @Html.ValidationMessageFor(model => model.taxyrmo, "", new { @class = "text-danger" })
                             </div>
                             @Html.LabelFor(model => model.taxyrmo, htmlAttributes: new { @class = "control-label col-md-2" })

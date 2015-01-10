@@ -13,11 +13,7 @@
         var rowCount = $(".retSaleRow").length;
         var prowCount = $(".retPurchRow").length;
         $(document).ready(function() {
-            //var $datepicker = $('#ui-datepicker-div');
-            //console.log($datepicker);
-            //$datepicker.css({
-            //    top: 60
-            //});
+
             $("#retSaleAdd").on("click", function() {
                 $.get('@Url.Action("AddRetSale", "returns")', { rowCount: rowCount }, function(data) {
                     $("#retSaleTbl").append(data);
@@ -32,25 +28,31 @@
                 });
             });
 
-            //$("#taxyrmo").datepicker({
-            //    changeMonth: true,
-            //    changeYear: true,
-            //    showButtonPanel: true,
-            //    dateFormat: 'MM yy',
-            //    onClose: function(dateText, inst) {
-            //        var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
-            //        var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-            //        $(this).datepicker('setDate', new Date(year, month, 1));
-            //    },
-            //    beforeShow: function(input, inst) {
-            //        setTimeout(function() {
-            //            inst.dpDiv.css({
-            //                top: 100,
-            //                left: 600
-            //            });
-            //        }, 0);
-            //    }
-            //});
+            //var validationSettings = $.data($('#taxyrmo').get(0), 'validator').settings;
+            //validationSettings.ignore = '.ignore';
+
+            $("#taxyrmo").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+                dateFormat: 'MM yy',
+                onClose: function(dateText, inst) {
+                    var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                    var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                    var date = new Date(year, month, 1);
+                    console.log(date);
+                    $("#taxyrmo").datepicker('setDate', date);
+
+                },
+                beforeShow: function(input, inst) {
+                    setTimeout(function() {
+                        inst.dpDiv.css({
+                            top: 100,
+                            left: 600
+                        });
+                    }, 0);
+                }
+            });
 
         });
     </script>

@@ -37,3 +37,29 @@ $('#transdate').datepicker({
         }, 0);
     }
 });
+
+
+$("#taxyrmo").datepicker({
+    changeMonth: true,
+    changeYear: true,
+    showButtonPanel: true,
+    dateFormat: 'MM yy',
+    onClose: function (dateText, inst) {
+        var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+        var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+        var date = new Date(year, month, 1);
+        console.log(date);
+        $("#taxyrmo").datepicker('setDate', date);
+
+    },
+    beforeShow: function (input, inst) {
+        setTimeout(function () {
+            inst.dpDiv.css({
+                top: 100,
+                left: 600
+            });
+        }, 0);
+    }
+});
+
+
