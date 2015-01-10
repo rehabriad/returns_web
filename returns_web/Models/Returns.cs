@@ -7,6 +7,7 @@ using System.Web;
 
 namespace returns_web.Models
 {
+    public enum ReturnStatus { Pending = 1, Colsed=2,Sent=3 }
     public class Returns
     {
         public Returns()
@@ -15,7 +16,11 @@ namespace returns_web.Models
             retpurch = new List<Retpurch>();
             moddate = DateTime.Now;
             transdate=DateTime.Now;
+            taxyrmo = DateTime.Now;
+            
             returncode = 1;
+            officeid = 83;
+            status=ReturnStatus.Pending;
         }
         public Guid Id { get; set; }
         public int officeid { get; set; }
@@ -27,7 +32,7 @@ namespace returns_web.Models
         public int returncode  { get; set; }
          
         [Display(Name = "الفترة الضريبية")]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/00}", ApplyFormatInEditMode = true)] 
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)] 
         public DateTime taxyrmo { get; set; }
        
         [Display(Name = "تاريخ المعاملة")]
@@ -46,6 +51,10 @@ namespace returns_web.Models
         public string doclocnum { get; set; }
 
         public DateTime moddate { get; set; }
+
+        public ReturnStatus status { get; set; }
+
+        public string docLocNumber { get; set; }
         public virtual ICollection<Retsale> retsale { get; set; }
         public virtual ICollection<Retpurch> retpurch { get; set; }
     }

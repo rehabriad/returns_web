@@ -151,6 +151,18 @@ namespace returns_web.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Send(Guid id)
+        {
+            Returns returns = db.Returns.Find(id);
+            Random random = new Random();
+            returns.docLocNumber = string.Format("rt{0}/{1}", DateTime.Now.ToString("ddMMyyyy"), random.Next(1000, 9999));
+            returns.status=ReturnStatus.Colsed;
+            db.Entry(returns).State = EntityState.Modified;
+            db.SaveChanges();
+            ViewBag.IsPrint = true;
+            return View("Details", returns);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
