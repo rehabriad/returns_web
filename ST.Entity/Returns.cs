@@ -1,0 +1,84 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Web;
+
+namespace ST.Entity
+{
+    public class Returns
+    {
+        public Returns()
+        {
+            retsale = new List<Retsale>();
+            retpurch = new List<Retpurch>();
+            moddate = DateTime.Now;
+            transdate = DateTime.Now;
+            taxyrmo = DateTime.Now;
+
+            returncode = 1;
+            officeid = 83;
+            saleltc = 0;
+            nettaxpy = 0;
+            purctdt2 = 0;
+            status = ReturnStatus.Pending;
+        }
+
+        [Key()]
+        public Guid Id { get; set; }
+
+        [Required()]
+        public int officeid { get; set; }
+
+        [StringLength(9)]
+        [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
+        [Display(Name = "rinDisplayName", ResourceType = typeof(ST.Resource.ReturnsResource))]
+        public string rin { get; set; }
+
+        [ForeignKey("rin")]
+        Master master { get; set; }
+
+        [Required()]
+        public int returncode { get; set; }
+
+        [Display(Name = "taxyrmoDisplayName", ResourceType = typeof(ST.Resource.ReturnsResource))]
+        [DisplayFormat(DataFormatString = "{0:MMMM yyyy}", ApplyFormatInEditMode = true)]
+        [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
+        public DateTime taxyrmo { get; set; }
+
+        [Display(Name = "transdateDisplayName", ResourceType = typeof(ST.Resource.ReturnsResource))]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
+        public DateTime transdate { get; set; }
+
+        [Display(Name = "saleltcDisplayName", ResourceType = typeof(ST.Resource.ReturnsResource))]
+        [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
+        public decimal saleltc { get; set; }
+
+        [Display(Name = "purctdt2DisplayName", ResourceType = typeof(ST.Resource.ReturnsResource))]
+        [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
+        public decimal purctdt2 { get; set; }
+
+        [Display(Name = "nettaxpyDisplayName", ResourceType = typeof(ST.Resource.ReturnsResource))]
+        [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
+        public decimal nettaxpy { get; set; }
+
+        [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
+        public int targetoffid { get; set; }
+
+        [StringLength(20)]
+        [Display(Name = "doclocnumDisplayName", ResourceType = typeof(ST.Resource.ReturnsResource))]
+        [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
+        public string docLocNumber { get; set; }
+
+        [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
+        public DateTime moddate { get; set; }
+
+        [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
+        public ReturnStatus status { get; set; }
+
+        public virtual ICollection<Retsale> retsale { get; set; }
+        public virtual ICollection<Retpurch> retpurch { get; set; }
+    }
+}

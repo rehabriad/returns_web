@@ -1,0 +1,108 @@
+﻿@model ST.Entity.Returns
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Returns</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.officeid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.officeid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.returncode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.returncode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.taxyrmo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.taxyrmo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.transdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.transdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.saleltc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.saleltc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.purctdt2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.purctdt2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nettaxpy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nettaxpy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.targetoffid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.targetoffid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.docLocNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.docLocNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.moddate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.moddate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

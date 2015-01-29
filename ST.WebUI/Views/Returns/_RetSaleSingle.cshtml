@@ -1,0 +1,48 @@
+﻿@model ST.Entity.Retsale
+@{
+    Layout = null;
+    int id = int.Parse(ViewBag.RowCount.ToString());
+    
+}
+    <tr class="retSaleRow">
+        <td>
+            @Html.Hidden("retsale.Id", Model.Id,new {data_str="retsale[**].Id"})
+            @Html.Hidden("retsale.returnsid", Model.returnsid, new { data_str = "retsale[**].returnsid" })
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.taxrateid, new { id = "retsale[" + @id + "].taxrateid", Name = "retsale[" + @id + "].taxrateid", data_str = "retsale.returnsid[**].taxrateid", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.taxrateid, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBox("retsale[" + @id + "].saleval", Model.saleval.ToString(), new { @class = "form-control", data_str = "retsale.returnsid[**].saleval" })
+                    @Html.ValidationMessageFor(model => model.saleval, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBox("retsale[" + @id + "].saletax", Model.saletax.ToString(), new { @class = "form-control", data_str = "retsale.returnsid[**].saletax" })
+                    @Html.ValidationMessageFor(model => model.saletax, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        
+        <td>
+            <input type="button" class="retsale-del" value="إلغاء"/>
+        </td>
+    </tr>
+
+<script type="text/javascript">
+    $(".retsale-del").on("click", function () {
+        console.log("here");
+        $(this).parents(".retSaleRow").remove();
+    });
+</script>

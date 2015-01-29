@@ -1,0 +1,91 @@
+﻿@model IEnumerable<ST.Entity.Returns>
+
+<h2>@ST.Resource.ReturnsResource.viewIndexH2</h2>
+
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(ST.Resource.GlobalResource.NavHome, "Index", "Returns")</li>
+    <li class="active">@ST.Resource.ReturnsResource.viewIndexH2</li>
+</ol>
+
+<p>
+    @Html.ActionLink(ST.Resource.ReturnsResource.viewIndexCreate, "Create", null, htmlAttributes: new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-striped table-bordered table-hover table-condensed table-responsive">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.rin)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.taxyrmo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.transdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.saleltc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.purctdt2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nettaxpy)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.docLocNumber)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.rin)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.taxyrmo, "ShortDateTime")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.transdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.saleltc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.purctdt2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nettaxpy)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.docLocNumber)
+            </td>
+
+            <td>
+
+                @Html.ActionLink(ST.Resource.ReturnsResource.viewIndexDetails, "Details", new { id = item.Id })
+                @if (item.status == ST.Entity.ReturnStatus.Pending)
+                {
+                    <span>|</span>
+                    @Html.ActionLink(ST.Resource.ReturnsResource.viewIndexEdit, "Edit", new { id = item.Id })
+                    <span>|</span>
+                    @Html.ActionLink(ST.Resource.ReturnsResource.viewIndexDelete, "Delete", new { id = item.Id })<span>|</span>
+                    @Html.ActionLink(ST.Resource.ReturnsResource.viewIndexSend, "Send", new { id = item.Id })
+                }
+                else
+                {
+                    <span>|</span><a onclick="PrintDocLocNum('@item.docLocNumber');">@ST.Resource.ReturnsResource.viewIndexPrint</a>
+                }
+            </td>
+        </tr>
+    }
+
+</table>

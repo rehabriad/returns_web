@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ST.Entity.Retsale>
+
+@{
+    var i = 0;
+}
+   
+<table id="retSaleTbl" class="table table-striped table-bordered table-hover" >
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.taxrateid)</th>
+        <th>
+            @Html.DisplayNameFor(model => model.saleval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.saletax)
+        </th>
+        
+        <th>
+            
+        </th>
+    </tr>
+
+    @foreach(var item in Model)
+    {
+        ViewBag.Rowcount = i;
+        @Html.Partial("_RetSaleSingle",item)
+        i++;
+    }
+</table>
+
+<table>
+    <tr>
+        <td>
+            <a id="retSaleAdd" class="btn btn-default">@ST.Resource.ReturnsResource.viewRetPurchListAddSales</a>
+        </td>
+    </tr>
+</table>
