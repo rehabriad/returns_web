@@ -16,8 +16,9 @@ namespace ST.WebUI.Controllers
         private ApplicationDbContext context = new ApplicationDbContext();
 
         // GET: Home
-        public string Index()
+        public ActionResult Index()
         {
+
             var roleStore = new RoleStore<IdentityRole>(context);
             var roleManager = new RoleManager<IdentityRole>(roleStore);
 
@@ -48,8 +49,8 @@ namespace ST.WebUI.Controllers
                 userManager.Create(user, "P@ssw0rd");
                 userManager.AddToRole(user.Id, "Users");
             }
-
-            return "This is HOME PAGE";
+            return RedirectToAction("Index", "Returns");
+            //return "This is HOME PAGE";
         }
 
         protected override void Dispose(bool disposing)
