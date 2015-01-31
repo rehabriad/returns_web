@@ -141,4 +141,7 @@
   <data name="viewLoginSubmitBtn" xml:space="preserve">
     <value>تسجيل الدخول</value>
   </data>
+  <data name="RinDisplayName" xml:space="preserve">
+    <value>رقم التسجيل</value>
+  </data>
 </root>

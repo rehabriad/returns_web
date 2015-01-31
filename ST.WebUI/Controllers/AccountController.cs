@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using ST.WebUI.DataContext;
 using ST.WebUI.Models;
 
 namespace ST.WebUI.Controllers
@@ -17,15 +19,30 @@ namespace ST.WebUI.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext _context;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,ApplicationDbContext context)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            Context = context;
+        }
+
+
+        public ApplicationDbContext Context
+        {
+            get
+            {
+                return _context ?? HttpContext.GetOwinContext().Get<ApplicationDbContext>();
+            }
+            private set
+            {
+                _context = value;
+            }
         }
 
         public ApplicationSignInManager SignInManager
@@ -82,7 +99,28 @@ namespace ST.WebUI.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, false, shouldLockout: false);
+
+            var user = await Context.Users.FirstOrDefaultAsync(u => u.rin == model.rin);
+            if (user == null)
+            {
+                ModelState.AddModelError("", ST.Resource.AccountResource.invalidLoginIn);
+                return View(model);
+            }
+            //if (await UserManager.IsLockedOutAsync(user.Id))
+            //{
+            //    return View("Lockout");
+            //}
+            //if (await UserManager.CheckPasswordAsync(user, model.Password))
+            //{
+            //    return RedirectToLocal(returnUrl);
+            //}
+            //else
+            //{
+            //    ModelState.AddModelError("", ST.Resource.AccountResource.invalidLoginIn);
+            //    return View(model);
+            //}
+
+            var result = await SignInManager.PasswordSignInAsync(user.UserName, model.Password, false, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:

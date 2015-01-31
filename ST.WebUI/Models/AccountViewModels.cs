@@ -49,8 +49,8 @@ namespace ST.WebUI.Models
     public class LoginViewModel
     {
         [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.AccountResource))]
-        [Display(Name = "UsernameDisplayName", ResourceType = typeof(ST.Resource.AccountResource))]
-        public string Username { get; set; }
+        [Display(Name = "RinDisplayName", ResourceType = typeof(ST.Resource.AccountResource))]
+        public string rin { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.AccountResource))]
         [DataType(DataType.Password)]

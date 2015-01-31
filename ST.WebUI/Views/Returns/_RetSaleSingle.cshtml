@@ -6,12 +6,12 @@
 }
     <tr class="retSaleRow">
         <td>
-            @Html.Hidden("retsale.Id", Model.Id,new {data_str="retsale[**].Id"})
-            @Html.Hidden("retsale.returnsid", Model.returnsid, new { data_str = "retsale[**].returnsid" })
+            @Html.Hidden("retsale.Id", Model.Id,new {data_str="retsale[**].Id", @class = "form-control"})
+            @Html.Hidden("retsale.returnsid", Model.returnsid, new { data_str = "retsale[**].returnsid", @class = "form-control" })
             <div class="form-group">
 
                 <div class="col-md-10">
-                    @Html.EnumDropDownListFor(model => model.taxrateid, new { id = "retsale[" + @id + "].taxrateid", Name = "retsale[" + @id + "].taxrateid", data_str = "retsale.returnsid[**].taxrateid", @class = "form-control" })
+                    @Html.EnumDropDownListFor(model => model.taxrateid, new { data_str = "retsale[**].taxrateid", @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.taxrateid, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -20,7 +20,7 @@
             <div class="form-group">
 
                 <div class="col-md-10">
-                    @Html.TextBox("retsale[" + @id + "].saleval", Model.saleval.ToString(), new { @class = "form-control", data_str = "retsale.returnsid[**].saleval" })
+                    @Html.TextBoxFor(model => model.saleval, new { @class = "form-control", data_str = "retsale[**].saleval" })
                     @Html.ValidationMessageFor(model => model.saleval, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -29,7 +29,7 @@
             <div class="form-group">
 
                 <div class="col-md-10">
-                    @Html.TextBox("retsale[" + @id + "].saletax", Model.saletax.ToString(), new { @class = "form-control", data_str = "retsale.returnsid[**].saletax" })
+                    @Html.TextBoxFor(model => model.saletax, new { @class = "form-control", data_str = "retsale[**].saletax" })
                     @Html.ValidationMessageFor(model => model.saletax, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -40,9 +40,3 @@
         </td>
     </tr>
 
-<script type="text/javascript">
-    $(".retsale-del").on("click", function () {
-        console.log("here");
-        $(this).parents(".retSaleRow").remove();
-    });
-</script>

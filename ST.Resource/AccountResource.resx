@@ -141,4 +141,7 @@
   <data name="viewLoginSubmitBtn" xml:space="preserve">
     <value>Log in</value>
   </data>
+  <data name="RinDisplayName" xml:space="preserve">
+    <value>Rin</value>
+  </data>
 </root>

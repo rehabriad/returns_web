@@ -3,7 +3,45 @@
     $(this).tab('show');
 });
 
-$('#tblOne tr').each(function() {});
+$('#tblOne tr').each(function () { });
+
+
+$(document).on("click", ".retpurch-del", function () {
+    $(this).parents(".retPurchRow").remove();
+});
+$(document).on("click", ".retsale-del", function () {
+    $(this).parents(".retSaleRow").remove();
+});
+
+$("#frm-returns").on("submit",function(e) {
+    var retIds = 0;
+    $(".retSaleRow").each(function () {
+        var retSale = this;
+        $(retSale).find(".form-control").each(function () {
+            var control = this;
+            var id = $(control).data("str");
+            id = id.replace("**", retIds);
+            $(control).attr("id", id);
+            $(control).attr("name", id);
+        });
+        retIds++;
+    });
+
+    var purchIds = 0;
+    $(".retPurchRow").each(function () {
+        var retPurch = this;
+        $(retPurch).find(".form-control").each(function () {
+            var control = this;
+            var id = $(control).data("str");
+            id = id.replace("**", purchIds);
+            $(control).attr("id", id);
+            $(control).attr("name", id);
+        });
+        purchIds++;
+    });
+    
+
+});
 
 function PrintDocLocNum(data) {
     var mywindow = window.open('', 'my div', 'height=400,width=600');

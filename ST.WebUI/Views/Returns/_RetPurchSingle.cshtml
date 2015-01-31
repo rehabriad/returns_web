@@ -7,13 +7,13 @@
 }
     <tr class="retPurchRow">
         <td>
-            @Html.Hidden("retpurch[" + @id + "].Id", Model.Id, new { @class = "form-control",data_str = "retpurch[**].Id" })
-            @Html.Hidden("retpurch[" + @id + "].returnsid", Model.returnsid,new { @class = "form-control"})
+            @Html.Hidden("retpurch.Id", Model.Id, new { @class = "form-control",data_str = "retpurch[**].Id" })
+            @Html.Hidden("retpurch.returnsid", Model.returnsid, new { @class = "form-control", data_str = "retpurch[**].returnsid" })
 
             <div class="form-group">
 
                 <div class="col-md-10">
-                    @Html.EnumDropDownListFor(model => model.taxrate, new { id = "retpurch[" + @id + "].taxrate", Name = "retpurch[" + @id + "].taxrate", @class = "form-control", data_str = "retpurch[**].taxrate" })
+                    @Html.EnumDropDownListFor(model => model.taxrate, new {  @class = "form-control", data_str = "retpurch[**].taxrate" })
                     @Html.ValidationMessageFor(model => model.taxrate, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -22,7 +22,7 @@
             <div class="form-group">
 
                 <div class="col-md-10">
-                    @Html.TextBox("retpurch[" + @id + "].purchval", Model.purchval.ToString(), new { @class = "form-control", data_str = "retpurch[**].purchval" })
+                    @Html.TextBoxFor(model => model.purchval, new { @class = "form-control", data_str = "retpurch[**].purchval" })
                     @Html.ValidationMessageFor(model => model.purchval, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -31,7 +31,7 @@
             <div class="form-group">
 
                 <div class="col-md-10">
-                    @Html.TextBox("retpurch[" + @id + "].purchtax", Model.purchtax.ToString(), new { @class = "form-control", data_str = "retpurch[**].purchtax" })
+                    @Html.TextBoxFor(model => model.purchtax, new { @class = "form-control", data_str = "retpurch[**].purchtax" })
                     @Html.ValidationMessageFor(model => model.purchtax, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -40,9 +40,3 @@
             <input type="button" class="retpurch-del" value="إلغاء" />
         </td>
     </tr>
-
-<script type="text/javascript">
-    $(".retpurch-del").on("click", function () {
-        $(this).parents(".retPurchRow").remove();
-    });
-</script>

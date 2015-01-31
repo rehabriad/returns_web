@@ -98,7 +98,8 @@ namespace ST.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var existing = await db.Returns.FindAsync(returns.Id);
+                //var existing = await db.Returns.Include(r=>r.retsale).Include(r=>r.retpurch).FirstOrDefaultAsync(r=>r.Id==returns.Id);
+                var existing = await db.Returns.FindAsync( returns.Id);
                 if (existing == null)
                 {
                     return RedirectToAction("Index");
@@ -114,9 +115,18 @@ namespace ST.WebUI.Controllers
                         db.Entry(retsale).State = EntityState.Added;
                     }
                     else
+                    {
+                        ((IObjectContextAdapter) db).ObjectContext.Detach(retsale);
                         db.Entry(retsale).State = EntityState.Modified;
+                    }
 
                 }
+
+                //foreach (var deleted in existing.retsale.Where(oldRow=>!returns.retsale.Select(r=>r.Id).Contains(oldRow.Id)))
+                //{
+                //    db.Entry(deleted).State = EntityState.Deleted;
+                //}
+
                 foreach (var retpurch in returns.retpurch)
                 {
                     if (returns.Id != retpurch.returnsid)
@@ -125,9 +135,16 @@ namespace ST.WebUI.Controllers
                         db.Entry(retpurch).State = EntityState.Added;
                     }
                     else
+                    {
+                        ((IObjectContextAdapter) db).ObjectContext.Detach(retpurch);
                         db.Entry(retpurch).State = EntityState.Modified;
+                    }
 
                 }
+                //foreach (var deleted in existing.retpurch.Where(oldRow => !returns.retpurch.Select(r => r.Id).Contains(oldRow.Id)))
+                //{
+                //    db.Entry(deleted).State = EntityState.Deleted;
+                //}
                 db.Entry(returns).State = EntityState.Modified;
                 await db.SaveChangesAsync();
 
