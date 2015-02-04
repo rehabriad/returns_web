@@ -79,27 +79,88 @@ $('#transdate').datepicker({
 });
 
 
-$("#taxyrmo").datepicker({
-    changeMonth: true,
-    changeYear: true,
-    showButtonPanel: true,
-    dateFormat: 'MM yy',
-    onClose: function (dateText, inst) {
-        var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
-        var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-        var date = new Date(year, month, 1);
-        console.log(date);
-        $("#taxyrmo").datepicker('setDate', date);
+$(document).ready(function () {
 
-    },
-    beforeShow: function (input, inst) {
-        setTimeout(function () {
-            inst.dpDiv.css({
-                top: 100,
-                left: 600
+    $("#retSaleAdd").on("click", function () {
+        var url = $(this).data('request-url');
+        $.get(url, function (data) {
+            $("#retSaleTbl tbody").append(data);
+
+        });
+    });
+    $("#retPurchAdd").on("click", function () {
+        var url = $(this).data('request-url');
+        $.get(url, function (data) {
+            $("#retPurchTbl tbody").append(data);
+
+        });
+    });
+
+    $("#taxyrmo").datepicker({
+        minDate: "-2M",
+        maxDate: "-1M",
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        dateFormat: 'MM yy',
+        onClose: function () {
+            var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+            var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+            var date = new Date(year, month, 1);
+            console.log(date);
+            $("#taxyrmo").datepicker('setDate', date);
+
+        },
+        beforeShow: function (input, inst) {
+            setTimeout(function () {
+                inst.dpDiv.css({
+                    top: 495,
+                    left: 720
+                });
+            }, 0);
+        },
+        onSelect: function () {
+            $("#taxyrmo-check").addClass("hidden");
+            var date1 = $(this).val();
+            var url = $("#taxyrmo").data('request-url');
+            $.post(url, { taxyrmo: date1 }, function (data) {
+                console.log(data.toLowerCase());
+                console.log(data.toLowerCase() == 'true');
+                if (data.toLowerCase() == 'true') {
+                    $("#taxyrmo-check").removeClass("hidden");
+                }
+
             });
-        }, 0);
-    }
+
+        }
+    });
+
+
 });
+
+//$("#taxyrmo").datepicker({
+//    minDate: new Date(date.getYear(), date.getMonth() - 2, 1),
+//    maxDate: new Date(date.getYear(), date.getMonth()-1, 0),
+//    changeMonth: true,
+//    changeYear: true,
+//    showButtonPanel: true,
+//    dateFormat: 'MM yy',
+//    onClose: function () {
+//        var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+//        var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+//        var date = new Date(year, month, 1);
+//        console.log(date);
+//        $("#taxyrmo").datepicker('setDate', date);
+
+//    },
+//    beforeShow: function (input, inst) {
+//        setTimeout(function () {
+//            inst.dpDiv.css({
+//                top: 100,
+//                left: 600
+//            });
+//        }, 0);
+//    }
+//});
 
 

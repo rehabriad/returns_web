@@ -13,8 +13,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.rin, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.rin, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.rin, new { @class = "form-control", @readonly = true })
                 @Html.ValidationMessageFor(model => model.rin, "", new { @class = "text-danger" })
+                
             </div>
 
         </div>
@@ -22,8 +23,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.taxyrmo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.taxyrmo, new { htmlAttributes = new { @class = "form-control", @data_val = "false" } })
+                @Html.EditorFor(model => model.taxyrmo, new { htmlAttributes = new { @class = "form-control", @data_val = "false", data_request_url = Url.Action("CheckExistingTaxyrmo", "returns") } })
                 @Html.ValidationMessageFor(model => model.taxyrmo, "", new { @class = "text-danger" })
+                <span id="taxyrmo-check" class="field-validation-error text-danger hidden">يوجد اقرار لنفس الفترة</span>
             </div>
 
         </div>
@@ -31,7 +33,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.transdate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.transdate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.transdate, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
                 @Html.ValidationMessageFor(model => model.transdate, "", new { @class = "text-danger" })
             </div>
 
@@ -39,23 +41,24 @@
     </div>
 
 
-    <div class="row">
-        <ul class="nav nav-tabs nav-justified" role="tablist">
-            <li role="presentation" class="active">
-                <a href="#retsale" aria-controls="home" role="tab" data-toggle="tab">@ST.Resource.ReturnsResource.viewCreateOrEditPurch</a>
-            </li>
-            <li role="presentation">
-                <a href="#retpurch" aria-controls="profile" role="tab" data-toggle="tab">@ST.Resource.ReturnsResource.viewCreateOrEditSales</a>
-            </li>
-        </ul>
-    </div>
+    <div class="row" role="tabpanel">
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li role="presentation" class="active">
+            <a href="#retsale" aria-controls="home" role="tab" data-toggle="tab">@ST.Resource.ReturnsResource.viewCreateOrEditPurch</a>
+        </li>
+        <li role="presentation">
+            <a href="#retpurch" aria-controls="profile" role="tab" data-toggle="tab">@ST.Resource.ReturnsResource.viewCreateOrEditSales</a>
+        </li>
+    </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="retsale">@Html.Partial("RetSaleList", Model.retsale)</div>
+            <div role="tabpanel" class="tab-pane" id="retpurch">@Html.Partial("RetPurchList", Model.retpurch)</div>
+        </div>
+</div>
 
 
-    <!-- Tab panes -->
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="retsale">@Html.Partial("RetSaleList", Model.retsale)</div>
-        <div role="tabpanel" class="tab-pane" id="retpurch">@Html.Partial("RetPurchList", Model.retpurch)</div>
-    </div>
+
 
     <br />
     

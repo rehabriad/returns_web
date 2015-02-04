@@ -106,6 +106,8 @@ namespace ST.WebUI.Controllers
                 ModelState.AddModelError("", ST.Resource.AccountResource.invalidLoginIn);
                 return View(model);
             }
+
+
             //if (await UserManager.IsLockedOutAsync(user.Id))
             //{
             //    return View("Lockout");
@@ -121,6 +123,7 @@ namespace ST.WebUI.Controllers
             //}
 
             var result = await SignInManager.PasswordSignInAsync(user.UserName, model.Password, false, shouldLockout: false);
+            
             switch (result)
             {
                 case SignInStatus.Success:

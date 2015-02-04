@@ -22,7 +22,8 @@ namespace ST.WebUI.Models
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
-            //userIdentity.AddClaim(new Claim(ClaimTypes.GivenName, this.FullUsername));
+            userIdentity.AddClaim(new Claim(ClaimTypes.Sid, this.rin));
+            userIdentity.AddClaim(new Claim(ClaimTypes.Name, this.UserName));
 
             return userIdentity;
         }

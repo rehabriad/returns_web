@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using ST.Entity;
 using ST.WebUI.DataContext;
 using System.Data.Entity.Infrastructure;
@@ -20,7 +22,9 @@ namespace ST.WebUI.Controllers
         // GET: Returns
         public async Task<ActionResult> Index()
         {
-            return View(await db.Returns.ToListAsync());
+            var identity = (ClaimsIdentity)User.Identity;
+            var rin = identity.FindFirst(ClaimTypes.Sid).Value;
+            return View(await db.Returns.Where(r=>r.rin==rin).ToListAsync());
         }
 
         // GET: Returns/Details/5
@@ -42,6 +46,10 @@ namespace ST.WebUI.Controllers
         public ActionResult Create()
         {
             var model = new Returns();
+            //adding rin to the model
+            var identity = (ClaimsIdentity)User.Identity;
+            var rin = identity.FindFirst(ClaimTypes.Sid).Value;
+            model.rin = rin;
             return View(model);
         }
 
@@ -104,6 +112,8 @@ namespace ST.WebUI.Controllers
                 {
                     return RedirectToAction("Index");
                 }
+                //var oldrets = existing.retsale;
+                //var oldPurch = existing.retpurch;
 
                 ((IObjectContextAdapter)db).ObjectContext.Detach(existing);
                 
@@ -116,14 +126,16 @@ namespace ST.WebUI.Controllers
                     }
                     else
                     {
-                        ((IObjectContextAdapter) db).ObjectContext.Detach(retsale);
+                        //((IObjectContextAdapter) db).ObjectContext.Detach(retsale);
                         db.Entry(retsale).State = EntityState.Modified;
                     }
 
                 }
 
-                //foreach (var deleted in existing.retsale.Where(oldRow=>!returns.retsale.Select(r=>r.Id).Contains(oldRow.Id)))
+                //foreach (var deleted in oldrets.Where(oldRow => !returns.retsale.Select(r => r.Id).Contains(oldRow.Id)))
                 //{
+                    
+                //    //db.Retsales.Remove(deleted);
                 //    db.Entry(deleted).State = EntityState.Deleted;
                 //}
 
@@ -136,13 +148,14 @@ namespace ST.WebUI.Controllers
                     }
                     else
                     {
-                        ((IObjectContextAdapter) db).ObjectContext.Detach(retpurch);
+                        //((IObjectContextAdapter) db).ObjectContext.Detach(retpurch);
                         db.Entry(retpurch).State = EntityState.Modified;
                     }
 
                 }
-                //foreach (var deleted in existing.retpurch.Where(oldRow => !returns.retpurch.Select(r => r.Id).Contains(oldRow.Id)))
+                //foreach (var deleted in oldPurch.Where(oldRow => !returns.retpurch.Select(r => r.Id).Contains(oldRow.Id)))
                 //{
+                //    //db.Retpurches.Remove(deleted);
                 //    db.Entry(deleted).State = EntityState.Deleted;
                 //}
                 db.Entry(returns).State = EntityState.Modified;
@@ -179,17 +192,28 @@ namespace ST.WebUI.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult AddRetSale(int rowCount = 0)
+        public ActionResult AddRetSale()
         {
             var model = new Retsale();
-            ViewBag.RowCount = rowCount;
             return View("_RetSaleSingle", model);
         }
-        public ActionResult AddPurchSale(int prowCount = 0)
+        public ActionResult AddPurchSale()
         {
             var model = new Retpurch();
-            ViewBag.RowCount = prowCount;
             return View("_RetPurchSingle", model);
+        }
+
+        [HttpPost]
+        public bool CheckExistingTaxyrmo(DateTime taxyrmo)
+        {
+            var existing = false;
+            var identity = (ClaimsIdentity)User.Identity;
+            var rin = identity.FindFirst(ClaimTypes.Sid).Value;
+            
+            var result = db.Returns.FirstOrDefaultAsync(w => w.rin == rin && w.taxyrmo == taxyrmo);
+            if (result.Result != null)
+                existing = true;
+            return existing;
         }
 
         public ActionResult Send(Guid id)
