@@ -124,7 +124,7 @@
     <value>صافى الضريبة</value>
   </data>
   <data name="purctdt2DisplayName" xml:space="preserve">
-    <value>المشتريات</value>
+    <value>ضريبة المشتريات</value>
   </data>
   <data name="RequiredMessage" xml:space="preserve">
     <value>يجب ادخال {0}.</value>
@@ -134,7 +134,7 @@
     <comment>DisplayName</comment>
   </data>
   <data name="saleltcDisplayName" xml:space="preserve">
-    <value>المبيعات</value>
+    <value>ضريبة المبيعات</value>
   </data>
   <data name="taxyrmoDisplayName" xml:space="preserve">
     <value>الفترة الضريبية</value>
@@ -161,10 +161,10 @@
     <value>إلغاء</value>
   </data>
   <data name="viewIndexDetails" xml:space="preserve">
-    <value>تفاصيل</value>
+    <value>تفاصيل الإقرار</value>
   </data>
   <data name="viewIndexEdit" xml:space="preserve">
-    <value>تعديل</value>
+    <value>تعديل الإقرار</value>
   </data>
   <data name="viewIndexH2" xml:space="preserve">
     <value>قائمة إقرارات المبيعات</value>
@@ -189,5 +189,8 @@
   </data>
   <data name="viewDeleteMsg" xml:space="preserve">
     <value>هل أنت متأكد من الإلغاء؟</value>
+  </data>
+  <data name="returncodeDisplayName" xml:space="preserve">
+    <value>نوع الإقرار</value>
   </data>
 </root>

@@ -1,5 +1,10 @@
 ﻿@model ST.Entity.Returns
-
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(ST.Resource.GlobalResource.NavHome, "Index", "Returns")</li>
+    <li class="active">@ST.Resource.ReturnsResource.viewIndexDetails</li>
+</ol>
+<h2>@ST.Resource.ReturnsResource.viewIndexDetails</h2>
+<br />
 @if (Model.status != ST.Entity.ReturnStatus.Pending)
 {
     
@@ -8,128 +13,138 @@
 
 
         </h4>
-    <a onclick="PrintDocLocNum('@Model.docLocNumber','@Model.rin','@Model.taxyrmo');">طباعة</a>
+    <a onclick="PrintDocLocNum('@Model.docLocNumber','@Model.rin','@Model.taxyrmo.ToShortDateString()');">طباعة</a>
 
 }
-<table>
+<table class="table table-striped table-bordered table-hover ">
     <tr>
         <td>
+            @Html.LabelFor(model => model.rin, htmlAttributes: new { @class = "control-label col-md-2" })
+
             <div class="col-md-10">
                 @Html.DisplayFor(model => model.rin)
             </div>
-            @Html.LabelFor(model => model.rin, htmlAttributes: new { @class = "control-label col-md-2" })
 
         </td>
-
+</tr>
+    <tr>
         <td>
+            @Html.LabelFor(model => model.taxyrmo, htmlAttributes: new { @class = "control-label col-md-2" })
+
+
             <div class="col-md-10">
                 @Html.DisplayFor(model => model.taxyrmo)
             </div>
-            @Html.LabelFor(model => model.taxyrmo, htmlAttributes: new { @class = "control-label col-md-2" })
         </td>
     </tr>
     <tr>
         <td>
+            @Html.LabelFor(model => model.transdate, htmlAttributes: new { @class = "control-label col-md-2" })
 
             <div class="col-md-10">
                 @Html.DisplayFor(model => model.transdate)
             </div>
-            @Html.LabelFor(model => model.transdate, htmlAttributes: new { @class = "control-label col-md-2" })
         </td>
     </tr>
 </table>
-@if (Model.retsale.Any())
-{
-    <p>المبيعات</p>
-    <table id="retPurchTbl" class="table table-striped table-bordered table-hover" style="direction: rtl">
-        <tr>
-            <th>النوع</th>
-            <th>
-                قيمة المبيعات
-            </th>
-            <th>
-                الضريبة
-            </th>
-        </tr>
-
-        @foreach (var item in Model.retsale)
-            {
+@if ((int)Model.returncode==1)
+{ 
+    if (Model.retsale.Any())
+    {
+        <p>المبيعات</p>
+        <table id="retPurchTbl" class="table table-striped table-bordered table-hover" style="direction: rtl">
             <tr>
-                <td>@Html.DisplayFor(i => item.taxrateid)</td>
-                <td>@Html.DisplayFor(i => item.saleval)</td>
-                <td>@Html.DisplayFor(i => item.saletax)</td>
+                <th>النوع</th>
+                <th>
+                    قيمة المبيعات
+                </th>
+                <th>
+                    الضريبة
+                </th>
             </tr>
-            }
+
+            @foreach (var item in Model.retsale)
+                {
+                <tr>
+                    <td>@Html.DisplayFor(i => item.taxrateid)</td>
+                    <td>@Html.DisplayFor(i => item.saleval)</td>
+                    <td>@Html.DisplayFor(i => item.saletax)</td>
+                </tr>
+                }
 
 
-    </table>
-}
-@if (Model.retpurch.Any())
-{
-    <p>المشتريات</p>
-    <table id="retPurchTbl" class="table table-striped table-bordered table-hover" style="direction: rtl">
-        <tr>
-            <th>النوع</th>
-            <th>
-                قيمة المشتريات
-            </th>
-            <th>
-                الضريبة
-            </th>
-        </tr>
-
-        @foreach (var item in Model.retpurch)
-            {
+        </table>
+    }
+    if (Model.retpurch.Any())
+    {
+        <p>المشتريات</p>
+        <table id="retPurchTbl" class="table table-striped table-bordered table-hover" style="direction: rtl">
             <tr>
-                <td>@Html.DisplayFor(i => item.taxrate)</td>
-                <td>@Html.DisplayFor(i => item.purchval)</td>
-                <td>@Html.DisplayFor(i => item.purchtax)</td>
+                <th>النوع</th>
+                <th>
+                    قيمة المشتريات
+                </th>
+                <th>
+                    الضريبة
+                </th>
             </tr>
-            }
+
+            @foreach (var item in Model.retpurch)
+                {
+                <tr>
+                    <td>@Html.DisplayFor(i => item.taxrate)</td>
+                    <td>@Html.DisplayFor(i => item.purchval)</td>
+                    <td>@Html.DisplayFor(i => item.purchtax)</td>
+                </tr>
+                }
 
 
+        </table>
+    }
+    <table class="table table-striped table-bordered">
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.saleltc, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.saleltc)
+                </div>
+
+            </td>
+            </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.purctdt2, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.purctdt2)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.nettaxpy, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.nettaxpy)
+                </div>
+            </td>
+            </tr>
+            <tr>
+            <td>
+                @Html.LabelFor(model => model.docLocNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.docLocNumber)
+                </div>
+            </td>
+        </tr>
     </table>
+
 }
-<table>
-    <tr>
-        <td>
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.saleltc)
-            </div>
-            @Html.LabelFor(model => model.saleltc   , htmlAttributes: new { @class = "control-label col-md-2" })
-
-        </td>
-
-        <td>
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.purctdt2)
-            </div>
-            @Html.LabelFor(model => model.purctdt2, htmlAttributes: new { @class = "control-label col-md-2" })
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.nettaxpy)
-            </div>
-            @Html.LabelFor(model => model.nettaxpy, htmlAttributes: new { @class = "control-label col-md-2" })
-        </td>
-
-        <td>
-
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.docLocNumber)
-            </div>
-            @Html.LabelFor(model => model.docLocNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-        </td>
-    </tr>
-</table>
-
-
 <p>
     @if (Model.status == ST.Entity.ReturnStatus.Pending)
         {
-        @Html.ActionLink("تعديل", "Edit", new { id = Model.Id }) <span>|</span>
+        @Html.ActionLink("تعديل", "Edit", new { id = Model.Id }, new { onclick = "CheckRetcode( '" + (int)Model.returncode + "');" })   <span>|</span>
+    @*<a id="@Model.Id" onclick ="CheckRetcode('@Model.returncode');" >تعديل</a>*@
         @Html.ActionLink("ارسال", "Send", new { id = Model.Id })<span>|</span>
         }
 
@@ -142,7 +157,7 @@
             var isPrint = '@ViewBag.IsPrint';
             console.log(isPrint);
             if (isPrint.toLowerCase() == 'true')
-                PrintDocLocNum('@Model.docLocNumber','@Model.rin','@Model.taxyrmo');
+                PrintDocLocNum('@Model.docLocNumber','@Model.rin','@Model.taxyrmo.ToShortDateString()');
         });
     </script>
 }

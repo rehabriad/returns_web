@@ -42,7 +42,26 @@ $("#frm-returns").on("submit",function(e) {
     
 
 });
+function CheckRetcode(data) {
 
+    var retcode = data;
+    if (retcode == 2) {
+        $("#retSaleAdd").hide();
+        $("#saleltcdiv").hide();
+        $("#purctdt2div").hide();
+        $("#nettaxdiv").hide();
+        $("#salespurchtab").hide();
+
+    }
+    if (retcode == 1) {
+        $("#retSaleAdd").show();
+        $("#saleltc").show();
+        $("#purctdt2").show();
+        $("#nettaxpy").show();
+        $("#salespurchtab").show();
+
+    }
+}
 function PrintDocLocNum(data,rin,taxyrmo) {
    
     var mywindow = window.open('', 'my div', 'height=400,width=600');
@@ -148,7 +167,27 @@ $(document).ready(function () {
 
         }
     });
-
+    $("#returncode").click(function () {
+    
+        var retcode = $("#returncode").val();
+        if (retcode == 2){
+            $("#retSaleAdd").hide();
+            $("#saleltcdiv").hide();
+            $("#purctdt2div").hide();
+            $("#nettaxdiv").hide();
+            $("#salespurchtab").hide();
+            
+        }
+        if (retcode == 1) {
+            $("#retSaleAdd").show();
+            $("#saleltc").show();
+            $("#purctdt2").show();
+            $("#nettaxpy").show();
+            $("#salespurchtab").show();
+            
+        }
+    });
+   
 
 });
 

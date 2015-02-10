@@ -60,6 +60,7 @@ namespace ST.WebUI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,officeid,rin,returncode,taxyrmo,transdate,saleltc,purctdt2,nettaxpy,targetoffid,docLocNumber,moddate,status,retsale,retpurch")] Returns returns)
         {
+
             if (ModelState.IsValid)
             {
                 var result = db.Returns.FirstOrDefaultAsync(w => w.rin == returns.rin && w.taxyrmo == returns.taxyrmo);
@@ -71,7 +72,6 @@ namespace ST.WebUI.Controllers
                 {
                     returns.Id = Guid.NewGuid();
                     returns.moddate = DateTime.Now;
-                    returns.returncode = returnCode.مبيعات;
 
                     db.Returns.Add(returns);
                     await db.SaveChangesAsync();

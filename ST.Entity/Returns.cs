@@ -16,7 +16,7 @@ namespace ST.Entity
             moddate = DateTime.Now;
             transdate = DateTime.Now;
             taxyrmo = DateTime.Now.AddMonths(-1);
-
+            docLocNumber = "";
             returncode = returnCode.مبيعات;
             officeid = 83;
             saleltc = 0;
@@ -40,6 +40,8 @@ namespace ST.Entity
         Master master { get; set; }
 
         [Required()]
+
+        [Display(Name = "returncodeDisplayName", ResourceType = typeof(ST.Resource.ReturnsResource))]
         public returnCode returncode { get; set; }
 
         [Display(Name = "taxyrmoDisplayName", ResourceType = typeof(ST.Resource.ReturnsResource))]
@@ -67,8 +69,8 @@ namespace ST.Entity
         [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
         public int targetoffid { get; set; }
 
-       // [StringLength(20)]
-       // [Display(Name = "doclocnumDisplayName", ResourceType = typeof(ST.Resource.ReturnsResource))]
+        [StringLength(20)]
+        [Display(Name = "doclocnumDisplayName", ResourceType = typeof(ST.Resource.ReturnsResource))]
        //[Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
         public string docLocNumber { get; set; }
 

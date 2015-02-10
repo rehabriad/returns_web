@@ -79,7 +79,7 @@ namespace ST.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to المشتريات.
+        ///   Looks up a localized string similar to ضريبة المشتريات.
         /// </summary>
         public static string purctdt2DisplayName {
             get {
@@ -93,6 +93,15 @@ namespace ST.Resource {
         public static string RequiredMessage {
             get {
                 return ResourceManager.GetString("RequiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نوع الإقرار.
+        /// </summary>
+        public static string returncodeDisplayName {
+            get {
+                return ResourceManager.GetString("returncodeDisplayName", resourceCulture);
             }
         }
         
@@ -115,7 +124,7 @@ namespace ST.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to المبيعات.
+        ///   Looks up a localized string similar to ضريبة المبيعات.
         /// </summary>
         public static string saleltcDisplayName {
             get {
@@ -214,7 +223,7 @@ namespace ST.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تفاصيل.
+        ///   Looks up a localized string similar to تفاصيل الإقرار.
         /// </summary>
         public static string viewIndexDetails {
             get {
@@ -223,7 +232,7 @@ namespace ST.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تعديل.
+        ///   Looks up a localized string similar to تعديل الإقرار.
         /// </summary>
         public static string viewIndexEdit {
             get {

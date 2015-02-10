@@ -1,8 +1,11 @@
 ﻿@model ST.Entity.Returns
-
+<ol class="breadcrumb">
+    <li>@Html.ActionLink(ST.Resource.GlobalResource.NavHome, "Index", "Returns")</li>
+    <li class="active">@ST.Resource.ReturnsResource.viewCreateOrEditH2</li>
+</ol>
 
 <h2>@ST.Resource.ReturnsResource.viewCreateOrEditH2</h2>
-
+<br />
 
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.Id)
@@ -50,8 +53,7 @@
         </div>
     </div>
 
-
-    <div class="row" role="tabpanel">
+    <div class="row" role="tabpanel" id="salespurchtab">
     <ul class="nav nav-tabs nav-justified" role="tablist">
         <li role="presentation" class="active">
             <a href="#retsale" aria-controls="home" role="tab" data-toggle="tab">@ST.Resource.ReturnsResource.viewCreateOrEditPurch</a>
@@ -68,26 +70,24 @@
 </div>
 
 
-
-
     <br />
     
     <div class="row">
         <div class="col-md-3">
-            <div class="form-group-sm">
+            <div class="form-group-sm" id="saleltcdiv">
                 @Html.LabelFor(model => model.saleltc, htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.saleltc, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.saleltc, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3" id="purctdt2div">
             <div class="form-group-sm">
                 @Html.LabelFor(model => model.purctdt2, htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.purctdt2, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.purctdt2, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3" id="nettaxdiv">
             <div class="form-group-sm">
                 @Html.LabelFor(model => model.nettaxpy, htmlAttributes: new { @class = "control-label" })
                 @Html.EditorFor(model => model.nettaxpy, new { htmlAttributes = new { @class = "form-control" } })
@@ -96,7 +96,9 @@
         </div>
         
     </div>
+
     <br />
+
     <div class="row">
         <div class="form-group">
             <div class="col-md-4">
