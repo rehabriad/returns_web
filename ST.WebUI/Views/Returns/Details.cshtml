@@ -8,8 +8,8 @@
 
 
         </h4>
-        <a onclick="PrintDocLocNum('@Model.docLocNumber');">طباعة</a>
-    
+    <a onclick="PrintDocLocNum('@Model.docLocNumber','@Model.rin','@Model.taxyrmo');">طباعة</a>
+
 }
 <table>
     <tr>
@@ -142,7 +142,7 @@
             var isPrint = '@ViewBag.IsPrint';
             console.log(isPrint);
             if (isPrint.toLowerCase() == 'true')
-                PrintDocLocNum('@Model.docLocNumber');
+                PrintDocLocNum('@Model.docLocNumber','@Model.rin','@Model.taxyrmo');
         });
     </script>
 }

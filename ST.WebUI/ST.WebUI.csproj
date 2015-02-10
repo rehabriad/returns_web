@@ -228,6 +228,7 @@
     <Compile Include="DataContext\STMigration\201501220909574_ModifyMaster.Designer.cs">
       <DependentUpon>201501220909574_ModifyMaster.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataContext\STMigration\Class1.cs" />
     <Compile Include="DataContext\STMigration\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

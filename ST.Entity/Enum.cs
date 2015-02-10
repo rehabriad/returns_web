@@ -35,4 +35,10 @@ namespace ST.Entity
         table,
         sale_table
     }
+
+    public enum returnCode
+    {
+        مبيعات=1,
+        صفري=2
+    }
 }

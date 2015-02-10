@@ -71,7 +71,7 @@ namespace ST.WebUI.Controllers
                 {
                     returns.Id = Guid.NewGuid();
                     returns.moddate = DateTime.Now;
-                    returns.returncode = 1;
+                    returns.returncode = returnCode.مبيعات;
 
                     db.Returns.Add(returns);
                     await db.SaveChangesAsync();

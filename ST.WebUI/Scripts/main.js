@@ -43,13 +43,27 @@ $("#frm-returns").on("submit",function(e) {
 
 });
 
-function PrintDocLocNum(data) {
+function PrintDocLocNum(data,rin,taxyrmo) {
+   
     var mywindow = window.open('', 'my div', 'height=400,width=600');
     mywindow.document.write('<html><head><title>رقم الوثيقة</title>');
     /*optional stylesheet*/ //mywindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
-    mywindow.document.write('</head><body dir="rtl" ><h4> رقم الوثيقة: ');
+    mywindow.document.write('</head><body dir="rtl" ><div style="width: 960px; color: navy; background-color: white; border: 2px solid blue; padding: 5px;"><h4> برجاء الإحتفاظ بهذا الرقم حيث أنه يمنكم الإستعلام عن إقراركم بهذا الرقم ');
+    mywindow.document.write('<br>');
+
+    mywindow.document.write('رقم التسجيل  :');
+    mywindow.document.write(rin);
+
+    mywindow.document.write('<br>');
+
+    mywindow.document.write('الفترة الضريبية  :');
+    mywindow.document.write(taxyrmo);
+
+    mywindow.document.write('<br>');
+
+    mywindow.document.write('رقم الوثيقة  :');
     mywindow.document.write(data);
-    mywindow.document.write('</h4></body></html>');
+    mywindow.document.write('</h4></div></body></html>');
 
     mywindow.document.close(); // necessary for IE >= 10
     mywindow.focus(); // necessary for IE >= 10

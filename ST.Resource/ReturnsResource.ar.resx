@@ -184,4 +184,10 @@
   <data name="rinError" xml:space="preserve">
     <value>لا يمكن ادخال اقرار لنفس الفتره</value>
   </data>
+  <data name="ViewDeleteButton" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="viewDeleteMsg" xml:space="preserve">
+    <value>هل أنت متأكد من الإلغاء؟</value>
+  </data>
 </root>

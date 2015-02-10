@@ -15,9 +15,9 @@ namespace ST.Entity
             retpurch = new List<Retpurch>();
             moddate = DateTime.Now;
             transdate = DateTime.Now;
-            taxyrmo = DateTime.Now;
+            taxyrmo = DateTime.Now.AddMonths(-1);
 
-            returncode = 1;
+            returncode = returnCode.مبيعات;
             officeid = 83;
             saleltc = 0;
             nettaxpy = 0;
@@ -40,7 +40,7 @@ namespace ST.Entity
         Master master { get; set; }
 
         [Required()]
-        public int returncode { get; set; }
+        public returnCode returncode { get; set; }
 
         [Display(Name = "taxyrmoDisplayName", ResourceType = typeof(ST.Resource.ReturnsResource))]
         [DisplayFormat(DataFormatString = "{0:MMMM yyyy}", ApplyFormatInEditMode = true)]
@@ -67,9 +67,9 @@ namespace ST.Entity
         [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
         public int targetoffid { get; set; }
 
-        [StringLength(20)]
-        [Display(Name = "doclocnumDisplayName", ResourceType = typeof(ST.Resource.ReturnsResource))]
-        [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
+       // [StringLength(20)]
+       // [Display(Name = "doclocnumDisplayName", ResourceType = typeof(ST.Resource.ReturnsResource))]
+       //[Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
         public string docLocNumber { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
