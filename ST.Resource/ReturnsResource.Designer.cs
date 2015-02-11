@@ -61,7 +61,7 @@ namespace ST.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الكود.
+        ///   Looks up a localized string similar to رقم الوثيقة.
         /// </summary>
         public static string doclocnumDisplayName {
             get {
@@ -223,7 +223,7 @@ namespace ST.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تفاصيل الإقرار.
+        ///   Looks up a localized string similar to تفاصيل.
         /// </summary>
         public static string viewIndexDetails {
             get {
@@ -232,7 +232,7 @@ namespace ST.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تعديل الإقرار.
+        ///   Looks up a localized string similar to تعديل .
         /// </summary>
         public static string viewIndexEdit {
             get {

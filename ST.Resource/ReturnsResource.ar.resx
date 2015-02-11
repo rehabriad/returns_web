@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="doclocnumDisplayName" xml:space="preserve">
-    <value>الكود</value>
+    <value>رقم الوثيقة</value>
   </data>
   <data name="nettaxpyDisplayName" xml:space="preserve">
     <value>صافى الضريبة</value>
@@ -161,10 +161,10 @@
     <value>إلغاء</value>
   </data>
   <data name="viewIndexDetails" xml:space="preserve">
-    <value>تفاصيل الإقرار</value>
+    <value>تفاصيل </value>
   </data>
   <data name="viewIndexEdit" xml:space="preserve">
-    <value>تعديل الإقرار</value>
+    <value>تعديل </value>
   </data>
   <data name="viewIndexH2" xml:space="preserve">
     <value>قائمة إقرارات المبيعات</value>

@@ -9,7 +9,7 @@
 {
     
         <h4>
-            رقم الوثيقة: @Html.DisplayFor(model => model.docLocNumber)
+            @ST.Resource.ReturnsResource.doclocnumDisplayName: @Html.DisplayFor(model => model.docLocNumber)
 
 
         </h4>
@@ -143,9 +143,8 @@
 <p>
     @if (Model.status == ST.Entity.ReturnStatus.Pending)
         {
-        @Html.ActionLink("تعديل", "Edit", new { id = Model.Id }, new { onclick = "CheckRetcode( '" + (int)Model.returncode + "');" })   <span>|</span>
-    @*<a id="@Model.Id" onclick ="CheckRetcode('@Model.returncode');" >تعديل</a>*@
-        @Html.ActionLink("ارسال", "Send", new { id = Model.Id })<span>|</span>
+        @Html.ActionLink(@ST.Resource.ReturnsResource.viewIndexEdit, "Edit", new { id = Model.Id }, new { onclick = "CheckRetcode( '" + (int)Model.returncode + "');" })   <span>|</span>
+        @Html.ActionLink(@ST.Resource.ReturnsResource.viewIndexSend, "Send", new { id = Model.Id })<span>|</span>
         }
 
     @Html.ActionLink("العودة للقائمة", "Index")
