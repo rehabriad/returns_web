@@ -39,3 +39,18 @@
             <input type="button" class="retpurch-del" value="إلغاء" />
         </td>
     </tr>
+<script>
+    $(document).ready(function () {
+        $("#purchtax").click(function () {
+
+            $("#purchtax").val(parseInt($("#purchval").val(), 10) * 0.1);
+            $("#purchtax").css({ "color": "green" });
+        });
+        jQuery("#purchtax").blur(function () {
+            if (parseInt($("#purchtax").val(), 10) != parseInt($("#purchval").val(), 10) * 0.1) {
+                $("#purchtax").css({ "color": "red" });
+
+            }
+        });
+    });
+</script>

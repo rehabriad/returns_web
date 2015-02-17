@@ -259,6 +259,7 @@
     <None Include="Properties\PublishProfiles\st-eg.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="images\banner.png" />
+    <Content Include="Scripts\banner.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
@@ -326,6 +327,7 @@
     <Content Include="Views\Masters\Details.cshtml" />
     <Content Include="Views\Masters\Edit.cshtml" />
     <Content Include="Views\Masters\Index.cshtml" />
+    <Content Include="Views\Shared\_ErrorReg.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

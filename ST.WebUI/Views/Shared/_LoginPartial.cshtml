@@ -1,18 +1,43 @@
 ﻿@using Microsoft.AspNet.Identity
+@using System.Data.Entity;
+
 @using System.Security.Claims
+@using Microsoft.AspNet.Identity.Owin;
+@using Microsoft.Owin.Security;
+@using ST.WebUI.DataContext;
+@using ST.WebUI.Models;
+@using System.Linq;
+
+
 
 @if (Request.IsAuthenticated)
 {
+    ST.WebUI.DataContext.STDbContext db = new ST.WebUI.DataContext.STDbContext();
+    ApplicationDbContext Context = new ApplicationDbContext();
+    string iid = User.Identity.GetUserId();
+    var user1 = Context.Users.Single(u => u.Id == iid);
+
+    var mas = db.Masters.SingleOrDefault(m => m.rin == user1.rin);
+  
+
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
     @Html.AntiForgeryToken()
-
+    if (mas != null)
+    {
+        
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink(ST.Resource.AccountResource.viewLoginHello + User.Identity.Name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            
+            @Html.ActionLink(ST.Resource.AccountResource.viewLoginHello + mas.regname + " !", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">@ST.Resource.AccountResource.viewLoginLogout</a></li>
     </ul>
+    }
+   
+    else{
+        return;
+    }
     }
 }
 else

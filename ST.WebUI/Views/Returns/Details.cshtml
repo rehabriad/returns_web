@@ -13,7 +13,7 @@
 
 
         </h4>
-    <a onclick="PrintDocLocNum('@Model.docLocNumber','@Model.rin','@Model.taxyrmo.ToShortDateString()');">طباعة</a>
+    <a onclick="PrintDocLocNum('@Model.docLocNumber','@Model.rin','@Model.taxyrmo.ToShortDateString()','@Model.transdate.ToShortDateString()');">طباعة</a>
 
 }
 <table class="table table-striped table-bordered table-hover ">
@@ -156,7 +156,7 @@
             var isPrint = '@ViewBag.IsPrint';
             console.log(isPrint);
             if (isPrint.toLowerCase() == 'true')
-                PrintDocLocNum('@Model.docLocNumber','@Model.rin','@Model.taxyrmo.ToShortDateString()');
+                PrintDocLocNum('@Model.docLocNumber', '@Model.rin', '@Model.taxyrmo.ToShortDateString()', '@Model.transdate.ToShortDateString()');
         });
     </script>
 }
