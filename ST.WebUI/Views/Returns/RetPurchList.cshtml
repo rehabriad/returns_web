@@ -32,3 +32,14 @@
         </td>
     </tr>
 </table>
+<script>
+    $(document).ready(function () {
+        $("#purchtax").click(function () {
+
+            if (parseInt($("#taxrate").val() == 14)){
+            $("#purchtax").val(parseInt($("#purchval").val(), 10) * 0.1);
+            $("#purchtax").css({ "color": "green" });}
+        });
+
+    });
+</script>

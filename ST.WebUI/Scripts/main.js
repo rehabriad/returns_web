@@ -11,10 +11,19 @@ $(document).on("click", ".retpurch-del", function () {
 });
 $(document).on("click", ".retsale-del", function () {
     $(this).parents(".retSaleRow").remove();
+
 });
 
 $("#frm-returns").on("submit",function(e) {
     var retIds = 0;
+
+    if (parseInt($("#nettaxpy").val(), 10) != parseInt($("#saleltc").val(), 10) - parseInt($("#purctdt2").val(), 10)) {
+        if (confirm("قيمة صافى الضريبة لا تساوى الفرق بين قيمة المبيعات و قيمة المشتريات ..هل تريد الأستمرار فى الحفظ?")==false) {
+            return false;
+        }
+    }
+   
+
     $(".retSaleRow").each(function () {
         var retSale = this;
         $(retSale).find(".form-control").each(function () {
@@ -39,7 +48,7 @@ $("#frm-returns").on("submit",function(e) {
         });
         purchIds++;
     });
-    
+       
 
 });
 function CheckRetcode(data) {
@@ -62,12 +71,13 @@ function CheckRetcode(data) {
 
     }
 }
-function PrintDocLocNum(data,rin,taxyrmo) {
+function PrintDocLocNum(data,rin,taxyrmo,transdate) {
    
-    var mywindow = window.open('', 'my div', 'height=400,width=600');
+    var mywindow = window.open('', 'my div', 'height=600,width=750');
     mywindow.document.write('<html><head><title>رقم الوثيقة</title>');
+   
     /*optional stylesheet*/ //mywindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
-    mywindow.document.write('</head><body dir="rtl" ><div style="width: 960px; color: navy; background-color: white; border: 2px solid blue; padding: 5px;"><h4> برجاء الإحتفاظ بهذا الرقم حيث أنه يمنكم الإستعلام عن إقراركم بهذا الرقم ');
+    mywindow.document.write('</head><body dir="rtl" ><div><img src=\"/images/banner.png\" alt=""  height="150" width="720" /></div><br><div style="width: 700px; color: navy; background-color: white; border: 2px solid blue; padding: 5px;"><h4> برجاء الإحتفاظ بهذا الرقم حيث أنه يمنكم الإستعلام عن إقراركم بهذا الرقم ');
     mywindow.document.write('<br>');
 
     mywindow.document.write('رقم التسجيل  :');
@@ -77,6 +87,11 @@ function PrintDocLocNum(data,rin,taxyrmo) {
 
     mywindow.document.write('الفترة الضريبية  :');
     mywindow.document.write(taxyrmo);
+
+    mywindow.document.write('<br>');
+
+    mywindow.document.write('تاريخ المعاملة  :');
+    mywindow.document.write(transdate);
 
     mywindow.document.write('<br>');
 
@@ -97,6 +112,7 @@ $('#transdate').datepicker({
     format: 'dd/MM/yyyy',
     startDate: '-3d',
     currentText: 'Now',
+    maxDate: 'Now',
     autoSize: true,
     gotoCurrent: true,
     showAnim: 'blind',
@@ -167,6 +183,35 @@ $(document).ready(function () {
 
         }
     });
+    nettaxpy
+    $("#nettaxpy").click(function () {
+        $("#nettaxpy").val(parseInt($("#saleltc").val(), 10) - parseInt($("#purctdt2").val(), 10));
+
+        $("#nettaxpy").css({ "color": "green" });
+    });
+    jQuery("#nettaxpy").blur(function () {
+        if (parseInt($("#nettaxpy").val(), 10) != parseInt($("#saleltc").val(), 10) - parseInt($("#purctdt2").val(), 10)) {
+            $("#nettaxpy").css({ "color": "red" });
+
+        }
+    });
+
+    jQuery("#saleltc").blur(function () {
+        $("#nettaxpy").val(parseInt($("#saleltc").val(), 10) - parseInt($("#purctdt2").val(), 10));
+        $("#nettaxpy").focus()
+
+        $("#nettaxpy").css({ "color": "green" });
+
+       
+    });
+    jQuery("#purctdt2").focusout(function () {
+        $("#nettaxpy").val(parseInt($("#saleltc").val(), 10) - parseInt($("#purctdt2").val(), 10));
+        $("#nettaxpy").focus()
+        $("#nettaxpy").css({ "color": "green" });
+
+
+    });
+  
     $("#returncode").click(function () {
     
         var retcode = $("#returncode").val();
@@ -179,16 +224,16 @@ $(document).ready(function () {
             
         }
         if (retcode == 1) {
-            $("#retSaleAdd").show();
-            $("#saleltc").show();
-            $("#purctdt2").show();
-            $("#nettaxpy").show();
+            $("#purctdt2div").show();
+            $("#nettaxdiv").show();
             $("#salespurchtab").show();
+            $("#retSaleAdd").show();
+            $("#saleltcdiv").show();
+          
             
         }
     });
    
-
 });
 
 //$("#taxyrmo").datepicker({

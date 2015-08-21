@@ -39,3 +39,14 @@
             <input type="button" class="retpurch-del" value="إلغاء" />
         </td>
     </tr>
+<script>
+    $(document).ready(function () {
+        $("#purchtax").click(function () {
+            
+            if ($("#taxrate").val() == 14){
+            $("#purchtax").val(parseInt($("#purchval").val(), 10) * 0.1);
+            $("#purchtax").css({ "color": "green" });}
+        });
+    
+    });
+</script>

@@ -132,4 +132,7 @@
   <data name="Title" xml:space="preserve">
     <value />
   </data>
+  <data name="Help" xml:space="preserve">
+    <value>مساعدة</value>
+  </data>
 </root>

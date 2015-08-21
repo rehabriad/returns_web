@@ -3,6 +3,7 @@
     Layout = null;
     
 }
+
     <tr class="retSaleRow">
         <td>
             @Html.Hidden("retsale.Id", Model.Id,new {data_str="retsale[**].Id", @class = "form-control"})
@@ -39,3 +40,21 @@
         </td>
     </tr>
 
+<script>
+    $(document).ready(function () {
+        $("#saletax").click(function () {
+            if ($("#taxrateid").val() == 14) {
+
+                $("#saletax").val(parseInt($("#saleval").val(), 10) * 0.1);
+                $("#saletax").css({ "color": "green" });
+            }
+        });
+        //jQuery("#saletax").blur(function () {
+        //    if (parseInt($("#saleval").val(), 10) != parseInt($("#saleval").val(), 10) * 0.1)
+        //    {
+        //        $("#saletax").css({ "color": "red" });
+
+        //    }
+        //});
+    });
+</script>

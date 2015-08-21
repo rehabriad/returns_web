@@ -36,3 +36,16 @@
         </td>
     </tr>
 </table>
+
+<script>
+    $(document).ready(function () {
+        $("#saletax").click(function () {
+            if ($("#taxrateid").val() == 14) {
+
+                $("#saletax").val(parseInt($("#saleval").val(), 10) * 0.1);
+                $("#saletax").css({ "color": "green" });
+            }
+        });
+     
+    });
+</script>

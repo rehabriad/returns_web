@@ -144,4 +144,19 @@
   <data name="RinDisplayName" xml:space="preserve">
     <value>رقم التسجيل</value>
   </data>
+  <data name="viewChangePassConfirm" xml:space="preserve">
+    <value>تأكيد كلمة السر</value>
+  </data>
+  <data name="viewChangePassCurrent" xml:space="preserve">
+    <value>كلمة السر الحالية</value>
+  </data>
+  <data name="viewChangePassErr" xml:space="preserve">
+    <value>كلمة المرور وتأكيد كلمة المرور الجديدة لا تتطابق</value>
+  </data>
+  <data name="viewChangePassNew" xml:space="preserve">
+    <value>كلمة السر الجديدة</value>
+  </data>
+  <data name="viewChangePassTitle" xml:space="preserve">
+    <value>تغيير كلمة السر</value>
+  </data>
 </root>

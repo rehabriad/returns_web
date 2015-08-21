@@ -106,61 +106,84 @@ namespace ST.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
+                var existing1 = await db.Returns.FindAsync(returns.Id);
                 //var existing = await db.Returns.Include(r=>r.retsale).Include(r=>r.retpurch).FirstOrDefaultAsync(r=>r.Id==returns.Id);
                 var existing = await db.Returns.FindAsync( returns.Id);
                 if (existing == null)
                 {
                     return RedirectToAction("Index");
                 }
-                //var oldrets = existing.retsale;
-                //var oldPurch = existing.retpurch;
+                //select the deleted ids of retsale and retpurch
 
+                //var salesids = existing.retsale.Where(s=>!returns.retsale.Select(r=>r.Id).Contains(s.Id)).Select(s => s.Id).ToList();
+                //var purchIds = existing.retpurch.Where(s => !returns.retpurch.Select(r => r.Id).Contains(s.Id)).Select(s => s.Id).ToList();
                 ((IObjectContextAdapter)db).ObjectContext.Detach(existing);
-                
-                foreach (var retsale in returns.retsale)
+                 if ((int)returns.returncode == 2)
                 {
-                    if (returns.Id != retsale.returnsid)
-                    {
-                        retsale.returnsid = returns.Id;
-                        db.Entry(retsale).State = EntityState.Added;
-                    }
-                    else
-                    {
-                        //((IObjectContextAdapter) db).ObjectContext.Detach(retsale);
-                        db.Entry(retsale).State = EntityState.Modified;
-                    }
+                  
+                    db.Retsales.RemoveRange(db.Retsales.Where(x => x.returnsid == returns.Id));
+                    db.Retpurches.RemoveRange(db.Retpurches.Where(x => x.returnsid == returns.Id));
 
+                    returns.saleltc = 0;
+                    returns.purctdt2 = 0;
+                    returns.nettaxpy = 0;
+                    await db.SaveChangesAsync();
+
+                   
                 }
 
-                //foreach (var deleted in oldrets.Where(oldRow => !returns.retsale.Select(r => r.Id).Contains(oldRow.Id)))
-                //{
-                    
-                //    //db.Retsales.Remove(deleted);
-                //    db.Entry(deleted).State = EntityState.Deleted;
-                //}
+                 if ((int)returns.returncode == 1)
+                 {
+                     var saleIds = new List<Guid>();
+                     foreach (var retsale in returns.retsale)
+                     {
+                         
+                         if (returns.Id != retsale.returnsid)
+                         {
+                             retsale.returnsid = returns.Id;
+                             db.Entry(retsale).State = EntityState.Added;
+                         }
+                         else
+                         {
+                             db.Entry(retsale).State = EntityState.Modified;
+                             saleIds.Add(retsale.Id);
+                         }
 
-                foreach (var retpurch in returns.retpurch)
-                {
-                    if (returns.Id != retpurch.returnsid)
-                    {
-                        retpurch.returnsid = returns.Id;
-                        db.Entry(retpurch).State = EntityState.Added;
-                    }
-                    else
-                    {
-                        //((IObjectContextAdapter) db).ObjectContext.Detach(retpurch);
-                        db.Entry(retpurch).State = EntityState.Modified;
-                    }
+                     }
 
-                }
-                //foreach (var deleted in oldPurch.Where(oldRow => !returns.retpurch.Select(r => r.Id).Contains(oldRow.Id)))
-                //{
-                //    //db.Retpurches.Remove(deleted);
-                //    db.Entry(deleted).State = EntityState.Deleted;
-                //}
+                     var deletedSales = db.Retsales.Where(s => s.returnsid == returns.Id && saleIds.All(r => r != s.Id)).ToList();
+                     if (deletedSales.Any())
+                         db.Retsales.RemoveRange(deletedSales);
+
+                     var purchIds = new List<Guid>();
+                     foreach (var retpurch in returns.retpurch)
+                     {
+                         if (returns.Id != retpurch.returnsid)
+                         {
+                             retpurch.returnsid = returns.Id;
+                             db.Entry(retpurch).State = EntityState.Added;
+                         }
+                         else
+                         {
+                             //((IObjectContextAdapter) db).ObjectContext.Detach(retpurch);
+                             db.Entry(retpurch).State = EntityState.Modified;
+                             purchIds.Add(retpurch.Id);
+                             
+                         }
+
+                     }
+                     //Remove deleted
+                     var deletedPurch = db.Retpurches.Where(s => s.returnsid == returns.Id && purchIds.All(r => r != s.Id)).ToList();
+                     if (deletedPurch.Any())
+                         db.Retpurches.RemoveRange(deletedPurch);
+                 }
+               
                 db.Entry(returns).State = EntityState.Modified;
+                
                 await db.SaveChangesAsync();
 
+
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(returns);
@@ -187,6 +210,9 @@ namespace ST.WebUI.Controllers
         public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
             Returns returns = await db.Returns.FindAsync(id);
+            db.Retsales.RemoveRange(db.Retsales.Where(x => x.returnsid == returns.Id));
+            db.Retpurches.RemoveRange(db.Retpurches.Where(x => x.returnsid == returns.Id));
+
             db.Returns.Remove(returns);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

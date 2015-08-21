@@ -32,7 +32,7 @@ namespace ST.WebUI.Controllers
             Context = context;
         }
 
-
+       
         public ApplicationDbContext Context
         {
             get
@@ -99,6 +99,7 @@ namespace ST.WebUI.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
+                 ST.WebUI.DataContext.STDbContext db = new ST.WebUI.DataContext.STDbContext();
 
             var user = await Context.Users.FirstOrDefaultAsync(u => u.rin == model.rin);
             if (user == null)
@@ -432,7 +433,11 @@ namespace ST.WebUI.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
-
+        public ActionResult InvalidReg()
+        {
+            ModelState.AddModelError("", ST.Resource.AccountResource.invalidLoginIn);
+            return View();
+        }
         //
         // POST: /Account/LogOff
         [HttpPost]
@@ -499,7 +504,7 @@ namespace ST.WebUI.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-
+       
         internal class ChallengeResult : HttpUnauthorizedResult
         {
             public ChallengeResult(string provider, string redirectUri)

@@ -106,6 +106,51 @@ namespace ST.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to كلمة السر الجديدة.
+        /// </summary>
+        public static string viewChangePassConfirm {
+            get {
+                return ResourceManager.GetString("viewChangePassConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to كلمة السر الحالية.
+        /// </summary>
+        public static string viewChangePassCurrent {
+            get {
+                return ResourceManager.GetString("viewChangePassCurrent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to كلمة المرور وتأكيد كلمة المرور الجديدة لا تتطابق.
+        /// </summary>
+        public static string viewChangePassErr {
+            get {
+                return ResourceManager.GetString("viewChangePassErr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to كلمة السر الجديدة.
+        /// </summary>
+        public static string viewChangePassNew {
+            get {
+                return ResourceManager.GetString("viewChangePassNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تغيير كلمة السر.
+        /// </summary>
+        public static string viewChangePassTitle {
+            get {
+                return ResourceManager.GetString("viewChangePassTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use a local account to log in..
         /// </summary>
         public static string viewLoginH4 {

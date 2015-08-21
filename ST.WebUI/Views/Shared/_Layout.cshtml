@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -44,10 +45,12 @@
                         <ul class="nav navbar-nav">
                             <li>@Html.ActionLink(ST.Resource.GlobalResource.NavHome, "Index", "Returns")</li>
                             <li>@Html.ActionLink(ST.Resource.GlobalResource.NavDeclaration, "Index", "Returns")</li>
+                            <li>@Html.ActionLink(ST.Resource.GlobalResource.Help, "Index", "Help")</li>
                         </ul>
                         @Html.Partial("_LoginPartial")
                     </div>
                 }
+               
             </div>
         </div>
 

@@ -236,7 +236,7 @@ namespace ST.WebUI.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                return RedirectToAction("Index", "Returns");
             }
             AddErrors(result);
             return View(model);
