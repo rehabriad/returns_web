@@ -346,6 +346,14 @@
     <Content Include="Views\Masters\Index.cshtml" />
     <Content Include="Views\Shared\_ErrorReg.cshtml" />
     <Content Include="Views\Help\Index.cshtml" />
+    <Content Include="Views\Returns\_RetCapitalSingle.cshtml" />
+    <Content Include="Views\Returns\RetCapitalList.cshtml" />
+    <Content Include="Views\Returns\_RetReceitSingle.cshtml" />
+    <Content Include="Views\Returns\RetReceitList.cshtml" />
+    <Content Include="Views\Returns\_RetLocalPurchSingle.cshtml" />
+    <Content Include="Views\Returns\RetLocalPurchList.cshtml" />
+    <Content Include="Views\Returns\_RetExPurchSingle.cshtml" />
+    <Content Include="Views\Returns\RetExPurchList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

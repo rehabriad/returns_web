@@ -61,11 +61,27 @@
         <li role="presentation">
             <a href="#retpurch" aria-controls="profile" role="tab" data-toggle="tab">@ST.Resource.ReturnsResource.viewCreateOrEditSales</a>
         </li>
+        <li role="presentation">
+            <a href="#retcapital" aria-controls="profile" role="tab" data-toggle="tab">@ST.Resource.ReturnsResource.viewCreateOrEditCapitals</a>
+        </li>
+        <li role="presentation">
+            <a href="#retreceit" aria-controls="profile" role="tab" data-toggle="tab">@ST.Resource.ReturnsResource.viewCreateOrEditReceits</a>
+        </li>
+        <li role="presentation">
+            <a href="#retlocalpurch" aria-controls="profile" role="tab" data-toggle="tab">@ST.Resource.ReturnsResource.viewCreateOrEditLocalPurches</a>
+        </li>
+        <li role="presentation">
+            <a href="#retexpurch" aria-controls="profile" role="tab" data-toggle="tab">@ST.Resource.ReturnsResource.viewCreateOrEditExPurches</a>
+        </li>
     </ul>
         <!-- Tab panes -->
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="retsale">@Html.Partial("RetSaleList", Model.retsale)</div>
             <div role="tabpanel" class="tab-pane" id="retpurch">@Html.Partial("RetPurchList", Model.retpurch)</div>
+            <div role="tabpanel" class="tab-pane" id="retcapital">@Html.Partial("RetCapitalList", Model.retcapital)</div>
+            <div role="tabpanel" class="tab-pane" id="retreceit">@Html.Partial("RetReceitList", Model.retreceit)</div>
+            <div role="tabpanel" class="tab-pane" id="retlocalpurch">@Html.Partial("RetLocalPurchList", Model.retlocalpurch)</div>
+            <div role="tabpanel" class="tab-pane" id="retexpurch">@Html.Partial("RetExPurchList", Model.retexpurch)</div>
         </div>
 </div>
 

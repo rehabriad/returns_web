@@ -7,7 +7,8 @@ using System.Web;
 
 namespace ST.Entity
 {
-    public enum taxrate { محلية = 14, صادرات }
+    //public enum taxrate { محلية = 14, صادرات }
+    public enum taxrate { خدمات=2, سلع=1,سلع_رأس_مالية=3 }
 
     public class Retpurch
     {
@@ -25,11 +26,15 @@ namespace ST.Entity
         public Guid returnsid { get; set; }
         [ForeignKey("returnsid")]
         Returns returns { get; set; }
-        [Display(Name = "النوع")]
+        [Display(Name = "المدخلات")]
         public taxrate taxrate { get; set; }
-         [Display(Name = "قيمة المشتربات")]
+        [Display(Name = "محلي")]
+        public decimal localval { get; set; }
+        [Display(Name = "مستورد")]
+        public decimal expval { get; set; }
+        [Display(Name = "إجمالي القيمة")]
         public decimal purchval { get; set; }
-          [Display(Name = "الضريبة")]
+        [Display(Name = "ضريبة المدخلات")]
         public decimal purchtax { get; set; }
 
         public int targetoffid { get; set; }

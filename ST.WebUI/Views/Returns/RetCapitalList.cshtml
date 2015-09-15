@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ST.Entity.RetCapital>
+
+@{
+    var i = 0;
+}
+
+
+<table id="retCapitalTbl" class="table table-striped table-bordered table-hover table-responsive" >
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.prevbalance)</th>
+        <th>
+            @Html.DisplayNameFor(model => model.paidtax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.discounttax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nondiscounttax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.shiftbalance)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        ViewBag.Rowcount = i;
+        @Html.Partial("_RetCapitalSingle", item)
+        i++;
+    }
+</table>
+
+<table>
+    <tr>
+        <td>
+            <a id="retCapitalAdd" data-request-url="@Url.Action("AddRetCapital", "returns")" class="btn btn-default">@ST.Resource.ReturnsResource.viewRetCapitalListAddCapital</a>
+        </td>
+    </tr>
+</table>

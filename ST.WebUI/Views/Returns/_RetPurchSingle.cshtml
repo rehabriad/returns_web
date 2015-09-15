@@ -21,6 +21,24 @@
             <div class="form-group">
 
                 <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.localval, new { @class = "form-control", data_str = "retpurch[**].localval" })
+                    @Html.ValidationMessageFor(model => model.localval, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.expval, new { @class = "form-control", data_str = "retpurch[**].expval" })
+                    @Html.ValidationMessageFor(model => model.expval, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
                     @Html.TextBoxFor(model => model.purchval, new { @class = "form-control", data_str = "retpurch[**].purchval" })
                     @Html.ValidationMessageFor(model => model.purchval, "", new { @class = "text-danger" })
                 </div>
@@ -39,14 +57,3 @@
             <input type="button" class="retpurch-del" value="إلغاء" />
         </td>
     </tr>
-<script>
-    $(document).ready(function () {
-        $("#purchtax").click(function () {
-            
-            if ($("#taxrate").val() == 14){
-            $("#purchtax").val(parseInt($("#purchval").val(), 10) * 0.1);
-            $("#purchtax").css({ "color": "green" });}
-        });
-    
-    });
-</script>

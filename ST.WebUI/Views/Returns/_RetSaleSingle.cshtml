@@ -20,6 +20,24 @@
             <div class="form-group">
 
                 <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.goodval, new { @class = "form-control", data_str = "retsale[**].goodval" })
+                    @Html.ValidationMessageFor(model => model.goodval, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.serviceval, new { @class = "form-control", data_str = "retsale[**].serviceval" })
+                    @Html.ValidationMessageFor(model => model.serviceval, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
                     @Html.TextBoxFor(model => model.saleval, new { @class = "form-control", data_str = "retsale[**].saleval" })
                     @Html.ValidationMessageFor(model => model.saleval, "", new { @class = "text-danger" })
                 </div>
@@ -40,21 +58,3 @@
         </td>
     </tr>
 
-<script>
-    $(document).ready(function () {
-        $("#saletax").click(function () {
-            if ($("#taxrateid").val() == 14) {
-
-                $("#saletax").val(parseInt($("#saleval").val(), 10) * 0.1);
-                $("#saletax").css({ "color": "green" });
-            }
-        });
-        //jQuery("#saletax").blur(function () {
-        //    if (parseInt($("#saleval").val(), 10) != parseInt($("#saleval").val(), 10) * 0.1)
-        //    {
-        //        $("#saletax").css({ "color": "red" });
-
-        //    }
-        //});
-    });
-</script>

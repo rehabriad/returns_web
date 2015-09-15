@@ -1,0 +1,50 @@
+﻿@model ST.Entity.RetReceit
+
+@{
+    Layout = null;
+    
+}
+    <tr class="retReceitRow">
+        <td>
+            @Html.Hidden("retreceit.Id", Model.Id, new { @class = "form-control", data_str = "retreceit[**].Id" })
+            @Html.Hidden("retreceit.returnsid", Model.returnsid, new { @class = "form-control", data_str = "retreceit[**].returnsid" })
+
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.recietcode, new { @class = "form-control", data_str = "retreceit[**].recietcode" })
+                    @Html.ValidationMessageFor(model => model.recietcode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.recietno, new { @class = "form-control", data_str = "retreceit[**].recietno" })
+                    @Html.ValidationMessageFor(model => model.recietno, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.recietserialfrom, new { @class = "form-control", data_str = "retreceit[**].recietserialfrom" })
+                    @Html.ValidationMessageFor(model => model.recietserialfrom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.recietserialto, new { @class = "form-control", data_str = "retreceit[**].recietserialto" })
+                    @Html.ValidationMessageFor(model => model.recietserialto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <input type="button" class="retreceit-del" value="إلغاء" />
+        </td>
+    </tr>

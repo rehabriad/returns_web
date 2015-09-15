@@ -8,12 +8,12 @@
 <br />
 @if (Model.status != ST.Entity.ReturnStatus.Pending)
 {
-    
-        <h4>
-            @ST.Resource.ReturnsResource.doclocnumDisplayName: @Html.DisplayFor(model => model.docLocNumber)
+
+    <h4>
+        @ST.Resource.ReturnsResource.doclocnumDisplayName: @Html.DisplayFor(model => model.docLocNumber)
 
 
-        </h4>
+    </h4>
     <a onclick="PrintDocLocNum('@Model.docLocNumber','@Model.rin','@Model.taxyrmo.ToShortDateString()','@Model.transdate.ToShortDateString()');">طباعة</a>
     <a onclick="PrintElem();">| طباعة اللإقرار </a>
 
@@ -65,9 +65,9 @@
         if (Model.retsale.Any())
         {
             <p>المبيعات</p>
-            <table id="retPurchTbl" class="table table-striped table-bordered table-hover" style="direction: rtl">
+            <table id="retSaleTbl" class="table table-striped table-bordered table-hover" style="direction: rtl">
                 <tr>
-                    <th>النوع</th>
+                    <th>فئة الضريبة</th>
                     <th>
                         السلعة
                     </th>
@@ -78,7 +78,7 @@
                         اجمالي القيمة
                     </th>
                     <th>
-                        الضريبة
+                        ضريبة القيمة المضافة
                     </th>
                 </tr>
 
@@ -86,6 +86,8 @@
                 {
                     <tr>
                         <td>@Html.DisplayFor(i => item.taxrateid)</td>
+                        <td>@Html.DisplayFor(i => item.goodval)</td>
+                        <td>@Html.DisplayFor(i => item.serviceval)</td>
                         <td>@Html.DisplayFor(i => item.saleval)</td>
                         <td>@Html.DisplayFor(i => item.saletax)</td>
                     </tr>
@@ -96,15 +98,21 @@
         }
         if (Model.retpurch.Any())
         {
-            <p>المشتريات</p>
+            <p>المدخلات</p>
             <table id="retPurchTbl" class="table table-striped table-bordered table-hover" style="direction: rtl">
                 <tr>
-                    <th>النوع</th>
+                    <th>المدخلات</th>
                     <th>
-                        قيمة المشتريات
+                        محلي
                     </th>
                     <th>
-                        الضريبة
+                        مستورد
+                    </th>
+                    <th>
+                        إجمالي القيمة
+                    </th>
+                    <th>
+                        ضريبة المدخلات
                     </th>
                 </tr>
 
@@ -112,8 +120,166 @@
                 {
                     <tr>
                         <td>@Html.DisplayFor(i => item.taxrate)</td>
+                        <td>@Html.DisplayFor(i => item.localval)</td>
+                        <td>@Html.DisplayFor(i => item.expval)</td>
                         <td>@Html.DisplayFor(i => item.purchval)</td>
                         <td>@Html.DisplayFor(i => item.purchtax)</td>
+                    </tr>
+                }
+
+
+            </table>
+        }
+
+        if (Model.retcapital.Any())
+        {
+            <p>السلع الرأسمالية</p>
+            <table id="retCapita;Tbl" class="table table-striped table-bordered table-hover" style="direction: rtl">
+                <tr>
+                    <th>رصيد سابق</th>
+                    <th>
+                        ضريبة مسددة خلال شهر
+                    </th>
+                    <th>
+                        الإجمالي
+                    </th>
+                    <th>
+                        ضريبة محصومة في حدود
+                        الضريبة المستحقة
+                    </th>
+                    <th>
+                        ضريبة غير
+                        قابلة للخصم
+                    </th>
+                    <th>
+                        رصيد مرحل
+                    </th>
+                </tr>
+
+                @foreach (var item in Model.retcapital)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(i => item.prevbalance)</td>
+                        <td>@Html.DisplayFor(i => item.paidtax)</td>
+                        <td>@Html.DisplayFor(i => item.totalval)</td>
+                        <td>@Html.DisplayFor(i => item.discounttax)</td>
+                        <td>@Html.DisplayFor(i => item.nondiscounttax)</td>
+                        <td>@Html.DisplayFor(i => item.shiftbalance)</td>
+                    </tr>
+                }
+
+
+            </table>
+        }
+
+        if (Model.retcapital.Any())
+        {
+            <p>الفواتير</p>
+            <table id="retCapita;Tbl" class="table table-striped table-bordered table-hover" style="direction: rtl">
+                <tr>
+                    <th>نوع</th>
+                    <th>
+                        عدد
+                    </th>
+                    <th>
+                        رقم المسلسل من
+                    </th>
+                    <th>رقم المسلسل الى
+                    </th>
+                </tr>
+
+                @foreach (var item in Model.retreceit)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(i => item.recietcode)</td>
+                        <td>@Html.DisplayFor(i => item.recietno)</td>
+                        <td>@Html.DisplayFor(i => item.recietserialfrom)</td>
+                        <td>@Html.DisplayFor(i => item.recietserialto)</td>
+                    </tr>
+                }
+
+
+            </table>
+        }
+
+        if (Model.retlocalpurch.Any())
+        {
+            <p>بيان المشتريات محلي</p>
+            <table id="retCapita;Tbl" class="table table-striped table-bordered table-hover" style="direction: rtl">
+                <tr>
+                    <th>اسم المورد</th>
+                    <th>
+                        رقم التسجيل
+                    </th>
+                    <th>
+                        خاضع
+                    </th>
+                    <th>
+                        معفى
+                    </th>
+                    <th>
+                        غير قابل للخصم
+                    </th>
+                    <th>
+                        فئة الضريبة
+                    </th>
+                    <th>
+                        ضريبة القيمة المضافة
+                    </th>
+                    <th>
+                        رقم الفاتورة
+                    </th>
+                    <th>
+                        تاريخ الفاتورة
+                    </th>
+                </tr>
+
+                @foreach (var item in Model.retlocalpurch)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(i => item.supplyname)</td>
+                        <td>@Html.DisplayFor(i => item.rin)</td>
+                        <td>@Html.DisplayFor(i => item.deppurch)</td>
+                        <td>@Html.DisplayFor(i => item.nondispurch)</td>
+                        <td>@Html.DisplayFor(i => item.indeppurch)</td>
+                        <td>@Html.DisplayFor(i => item.taxrateid)</td>
+                        <td>@Html.DisplayFor(i => item.vattax)</td>
+                        <td>@Html.DisplayFor(i => item.recietserial)</td>
+                        <td>@Html.DisplayFor(i => item.recietdate)</td>
+                    </tr>
+                }
+
+
+            </table>
+        }
+        if (Model.retexpurch.Any())
+        {
+            <p>بيان المشتريات مستورد</p>
+            <table id="retCapita;Tbl" class="table table-striped table-bordered table-hover" style="direction: rtl">
+                <tr>
+                    <th>نوع الشهادة</th>
+                    <th>
+                        عدد الشهادات
+                    </th>
+                    <th>
+                        إجمالي القيمة
+                    </th>
+                    <th>
+                        فئة الضريبة
+                    </th>
+                    <th>
+                        الضريبة
+                    </th>
+                </tr>
+
+                @foreach (var item in Model.retexpurch)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(i => item.recietcode)</td>
+                        <td>@Html.DisplayFor(i => item.certno)</td>
+                        <td>@Html.DisplayFor(i => item.totalvalue)</td>
+                        <td>@Html.DisplayFor(i => item.taxrateid)</td>
+                        <td>@Html.DisplayFor(i => item.tax)</td>
                     </tr>
                 }
 
@@ -162,10 +328,10 @@
 </div>
 <p>
     @if (Model.status == ST.Entity.ReturnStatus.Pending)
-        {
+    {
         @Html.ActionLink(@ST.Resource.ReturnsResource.viewIndexEdit, "Edit", new { id = Model.Id }, new { onclick = "CheckRetcode( '" + (int)Model.returncode + "');" })   <span>|</span>
         @Html.ActionLink(@ST.Resource.ReturnsResource.viewIndexSend, "Send", new { id = Model.Id })<span>|</span>
-        }
+    }
 
     @Html.ActionLink("العودة للقائمة", "Index")
 </p>

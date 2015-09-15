@@ -13,6 +13,9 @@ namespace ST.Entity
         {
             retsale = new List<Retsale>();
             retpurch = new List<Retpurch>();
+            retcapital=new List<RetCapital>();
+            retreceit=new List<RetReceit>();
+            retlocalpurch=new List<RetLocalPurch>();
             moddate = DateTime.Now;
             transdate = DateTime.Now;
             taxyrmo = DateTime.Now.AddMonths(-1);
@@ -82,5 +85,9 @@ namespace ST.Entity
 
         public virtual ICollection<Retsale> retsale { get; set; }
         public virtual ICollection<Retpurch> retpurch { get; set; }
+        public virtual ICollection<RetCapital> retcapital { get; set; }
+        public virtual ICollection<RetReceit> retreceit { get; set; }
+        public virtual ICollection<RetLocalPurch> retlocalpurch { get; set; }
+        public virtual ICollection<RetExPurch> retexpurch { get; set; }
     }
 }

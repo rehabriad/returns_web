@@ -146,10 +146,10 @@
     <value>إقرار مبيعات</value>
   </data>
   <data name="viewCreateOrEditPurch" xml:space="preserve">
-    <value>المبيعات</value>
+    <value>التوريدات</value>
   </data>
   <data name="viewCreateOrEditSales" xml:space="preserve">
-    <value>المشتريات</value>
+    <value>المدخلات</value>
   </data>
   <data name="viewCreateOrEditSave" xml:space="preserve">
     <value>حفظ</value>
@@ -176,10 +176,10 @@
     <value>ارسال</value>
   </data>
   <data name="viewRetPurchListAddPurch" xml:space="preserve">
-    <value>إضافة مشتريات</value>
+    <value>إضافة مدخلات</value>
   </data>
   <data name="viewRetPurchListAddSales" xml:space="preserve">
-    <value>إضافة مبيعات</value>
+    <value>إضافة توريدات</value>
   </data>
   <data name="rinError" xml:space="preserve">
     <value>لا يمكن ادخال اقرار لنفس الفتره</value>
@@ -192,5 +192,23 @@
   </data>
   <data name="returncodeDisplayName" xml:space="preserve">
     <value>نوع الإقرار</value>
+  </data>
+  <data name="viewCreateOrEditCapitals" xml:space="preserve">
+    <value>ضريبة سلع رأسمالية</value>
+  </data>
+  <data name="viewCreateOrEditReceits" xml:space="preserve">
+    <value>الفواتير</value>
+  </data>
+    <data name="viewCreateOrEditLocalPurches" xml:space="preserve">
+    <value>بيان مشتريات محلي</value>
+  </data>
+  <data name="viewRetCapitalListAddCapital" xml:space="preserve">
+    <value>إضافة ضريبة سلع رأسمالية</value>
+  </data>
+  <data name="viewRetReceitListAddReceit" xml:space="preserve">
+    <value>إضافة فواتير</value>
+  </data>
+<data name="viewRetLocalPurchListAddLocalPurch" xml:space="preserve">
+    <value>إضافة بيان مشتريات محلي</value>
   </data>
 </root>

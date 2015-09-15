@@ -58,7 +58,7 @@ namespace ST.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,officeid,rin,returncode,taxyrmo,transdate,saleltc,purctdt2,nettaxpy,targetoffid,docLocNumber,moddate,status,retsale,retpurch")] Returns returns)
+        public async Task<ActionResult> Create([Bind(Include = "Id,officeid,rin,returncode,taxyrmo,transdate,saleltc,purctdt2,nettaxpy,targetoffid,docLocNumber,moddate,status,retsale,retpurch,retcapital,retreceit,retlocalpurch,retexpurch")] Returns returns)
         {
 
             if (ModelState.IsValid)
@@ -102,7 +102,7 @@ namespace ST.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,officeid,rin,returncode,taxyrmo,transdate,saleltc,purctdt2,nettaxpy,targetoffid,moddate,status,docLocNumber,retsale,retpurch")] Returns returns)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,officeid,rin,returncode,taxyrmo,transdate,saleltc,purctdt2,nettaxpy,targetoffid,moddate,status,docLocNumber,retsale,retpurch,retcapital,retreceit,retlocalpurch,retexpurch")] Returns returns)
         {
             if (ModelState.IsValid)
             {
@@ -123,6 +123,10 @@ namespace ST.WebUI.Controllers
                   
                     db.Retsales.RemoveRange(db.Retsales.Where(x => x.returnsid == returns.Id));
                     db.Retpurches.RemoveRange(db.Retpurches.Where(x => x.returnsid == returns.Id));
+                    db.Retcapitals.RemoveRange(db.Retcapitals.Where(x => x.returnsid == returns.Id));
+                    db.RetReceits.RemoveRange(db.RetReceits.Where(x => x.returnsid == returns.Id));
+                    db.RetLocalPurches.RemoveRange(db.RetLocalPurches.Where(x => x.returnsid == returns.Id));
+                    db.RetExPurches.RemoveRange(db.RetExPurches.Where(x => x.returnsid == returns.Id));
 
                     returns.saleltc = 0;
                     returns.purctdt2 = 0;
@@ -176,14 +180,105 @@ namespace ST.WebUI.Controllers
                      var deletedPurch = db.Retpurches.Where(s => s.returnsid == returns.Id && purchIds.All(r => r != s.Id)).ToList();
                      if (deletedPurch.Any())
                          db.Retpurches.RemoveRange(deletedPurch);
+
+
+                     var capitalIds = new List<Guid>();
+                     foreach (var retcapital in returns.retcapital)
+                     {
+                         if (returns.Id != retcapital.returnsid)
+                         {
+                             retcapital.returnsid = returns.Id;
+                             db.Entry(retcapital).State = EntityState.Added;
+                         }
+                         else
+                         {
+                             //((IObjectContextAdapter) db).ObjectContext.Detach(retpurch);
+                             db.Entry(retcapital).State = EntityState.Modified;
+                             capitalIds.Add(retcapital.Id);
+
+                         }
+
+                     }
+                     //Remove deleted
+                     var deletedcapital = db.Retcapitals.Where(s => s.returnsid == returns.Id && capitalIds.All(r => r != s.Id)).ToList();
+                     if (deletedcapital.Any())
+                         db.Retcapitals.RemoveRange(deletedcapital);
+
+
+                     var receitIds = new List<Guid>();
+                     foreach (var retreceit in returns.retreceit)
+                     {
+                         if (returns.Id != retreceit.returnsid)
+                         {
+                             retreceit.returnsid = returns.Id;
+                             db.Entry(retreceit).State = EntityState.Added;
+                         }
+                         else
+                         {
+                             //((IObjectContextAdapter) db).ObjectContext.Detach(retpurch);
+                             db.Entry(retreceit).State = EntityState.Modified;
+                             receitIds.Add(retreceit.Id);
+
+                         }
+
+                     }
+                     //Remove deleted
+                     var deletedreceit = db.RetReceits.Where(s => s.returnsid == returns.Id && receitIds.All(r => r != s.Id)).ToList();
+                     if (deletedreceit.Any())
+                         db.RetReceits.RemoveRange(deletedreceit);
+
+
+                     var localpurchIds = new List<Guid>();
+                     foreach (var retlocalpurch in returns.retlocalpurch)
+                     {
+                         if (returns.Id != retlocalpurch.returnsid)
+                         {
+                             retlocalpurch.returnsid = returns.Id;
+                             db.Entry(retlocalpurch).State = EntityState.Added;
+                         }
+                         else
+                         {
+                             //((IObjectContextAdapter) db).ObjectContext.Detach(retpurch);
+                             db.Entry(retlocalpurch).State = EntityState.Modified;
+                             localpurchIds.Add(retlocalpurch.Id);
+
+                         }
+
+                     }
+                     //Remove deleted
+                     var deletedlocalpurch = db.RetLocalPurches.Where(s => s.returnsid == returns.Id && localpurchIds.All(r => r != s.Id)).ToList();
+                     if (deletedlocalpurch.Any())
+                         db.RetLocalPurches.RemoveRange(deletedlocalpurch);
+
+
+                     var expurchIds = new List<Guid>();
+                     foreach (var retexpurch in returns.retexpurch)
+                     {
+                         if (returns.Id != retexpurch.returnsid)
+                         {
+                             retexpurch.returnsid = returns.Id;
+                             db.Entry(retexpurch).State = EntityState.Added;
+                         }
+                         else
+                         {
+                             //((IObjectContextAdapter) db).ObjectContext.Detach(retpurch);
+                             db.Entry(retexpurch).State = EntityState.Modified;
+                             expurchIds.Add(retexpurch.Id);
+
+                         }
+
+                     }
+                     //Remove deleted
+                     var deletedexpurch = db.RetExPurches.Where(s => s.returnsid == returns.Id && expurchIds.All(r => r != s.Id)).ToList();
+                     if (deletedexpurch.Any())
+                         db.RetExPurches.RemoveRange(deletedexpurch);
+
                  }
                
                 db.Entry(returns).State = EntityState.Modified;
                 
                 await db.SaveChangesAsync();
 
-
-                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(returns);
@@ -227,6 +322,29 @@ namespace ST.WebUI.Controllers
         {
             var model = new Retpurch();
             return View("_RetPurchSingle", model);
+        }
+
+        public ActionResult AddRetCapital()
+        {
+            var model = new RetCapital();
+            return View("_RetCapitalSingle", model);
+        }
+
+        public ActionResult AddRetReceit()
+        {
+            var model = new RetReceit();
+            return View("_RetReceitSingle", model);
+        }
+        public ActionResult AddRetLocalPurch()
+        {
+            var model = new RetLocalPurch();
+            return View("_RetLocalPurchSingle", model);
+        }
+
+        public ActionResult AddRetExPurch()
+        {
+            var model = new RetExPurch();
+            return View("_RetExPurchSingle", model);
         }
 
         [HttpPost]

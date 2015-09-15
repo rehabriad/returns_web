@@ -1,0 +1,95 @@
+﻿@model ST.Entity.RetLocalPurch
+
+@{
+    Layout = null;
+    
+}
+    <tr class="retLocalPurchRow">
+        <td>
+            @Html.Hidden("retlocalpurch.Id", Model.Id, new { @class = "form-control", data_str = "retlocalpurch[**].Id" })
+            @Html.Hidden("retlocalpurch.returnsid", Model.returnsid, new { @class = "form-control", data_str = "retlocalpurch[**].returnsid" })
+
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.supplyname, new { @class = "form-control", data_str = "retlocalpurch[**].supplyname" })
+                    @Html.ValidationMessageFor(model => model.supplyname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.rin, new { @class = "form-control", data_str = "retlocalpurch[**].rin" })
+                    @Html.ValidationMessageFor(model => model.rin, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.deppurch, new { @class = "form-control", data_str = "retlocalpurch[**].deppurch" })
+                    @Html.ValidationMessageFor(model => model.deppurch, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.nondispurch, new { @class = "form-control", data_str = "retlocalpurch[**].nondispurch" })
+                    @Html.ValidationMessageFor(model => model.nondispurch, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.indeppurch, new { @class = "form-control", data_str = "retlocalpurch[**].indeppurch" })
+                    @Html.ValidationMessageFor(model => model.indeppurch, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.taxrateid, new { @class = "form-control", data_str = "retlocalpurch[**].taxrateid" })
+                    @Html.ValidationMessageFor(model => model.taxrateid, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.vattax, new { @class = "form-control", data_str = "retlocalpurch[**].vattax" })
+                    @Html.ValidationMessageFor(model => model.vattax, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.recietserial, new { @class = "form-control", data_str = "retlocalpurch[**].recietserial" })
+                    @Html.ValidationMessageFor(model => model.recietserial, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.recietdate, new { @class = "form-control recietdate", data_str = "retlocalpurch[**].recietdate" })
+                    @Html.ValidationMessageFor(model => model.recietdate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <input type="button" class="retlocalpurch-del" value="إلغاء" />
+        </td>
+    </tr>

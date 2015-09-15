@@ -1,0 +1,68 @@
+﻿@model ST.Entity.RetCapital
+
+@{
+    Layout = null;
+    
+}
+    <tr class="retCapitalRow">
+        <td>
+            @Html.Hidden("retcapital.Id", Model.Id, new { @class = "form-control", data_str = "retcapital[**].Id" })
+            @Html.Hidden("retcapital.returnsid", Model.returnsid, new { @class = "form-control", data_str = "retcapital[**].returnsid" })
+
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.prevbalance, new { @class = "form-control", data_str = "retcapital[**].prevbalance" })
+                    @Html.ValidationMessageFor(model => model.prevbalance, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.paidtax, new { @class = "form-control", data_str = "retcapital[**].paidtax" })
+                    @Html.ValidationMessageFor(model => model.paidtax, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.totalval, new { @class = "form-control", data_str = "retcapital[**].totalval" })
+                    @Html.ValidationMessageFor(model => model.totalval, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.discounttax, new { @class = "form-control", data_str = "retcapital[**].discounttax" })
+                    @Html.ValidationMessageFor(model => model.discounttax, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.nondiscounttax, new { @class = "form-control", data_str = "retcapital[**].nondiscounttax" })
+                    @Html.ValidationMessageFor(model => model.nondiscounttax, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.shiftbalance, new { @class = "form-control", data_str = "retcapital[**].shiftbalance" })
+                    @Html.ValidationMessageFor(model => model.shiftbalance, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <input type="button" class="retcapital-del" value="إلغاء" />
+        </td>
+    </tr>

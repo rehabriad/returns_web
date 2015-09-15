@@ -13,6 +13,23 @@ $(document).on("click", ".retsale-del", function () {
     $(this).parents(".retSaleRow").remove();
 
 });
+$(document).on("click", ".retcapital-del", function () {
+    $(this).parents(".retCapitalRow").remove();
+
+});
+$(document).on("click", ".retreceit-del", function () {
+    $(this).parents(".retReceitRow").remove();
+
+});
+$(document).on("click", ".retlocalpurch-del", function () {
+    $(this).parents(".retLocalPurchRow").remove();
+
+});
+$(document).on("click", ".retexpurch-del", function () {
+    $(this).parents(".retExPurchRow").remove();
+
+});
+
 
 $("#frm-returns").on("submit",function(e) {
     var retIds = 0;
@@ -48,7 +65,58 @@ $("#frm-returns").on("submit",function(e) {
         });
         purchIds++;
     });
-       
+
+    var capitalIds = 0;
+    $(".retCapitalRow").each(function () {
+        var retCapital = this;
+        $(retCapital).find(".form-control").each(function () {
+            var control = this;
+            var id = $(control).data("str");
+            id = id.replace("**", capitalIds);
+            $(control).attr("id", id);
+            $(control).attr("name", id);
+        });
+        capitalIds++;
+    });
+
+    var receitIds = 0;
+    $(".retReceitRow").each(function () {
+        var retReceit = this;
+        $(retReceit).find(".form-control").each(function () {
+            var control = this;
+            var id = $(control).data("str");
+            id = id.replace("**", receitIds);
+            $(control).attr("id", id);
+            $(control).attr("name", id);
+        });
+        receitIds++;
+    });
+
+    var localpurchIds = 0;
+    $(".retLocalPurchRow").each(function () {
+        var retLocalPurch = this;
+        $(retLocalPurch).find(".form-control").each(function () {
+            var control = this;
+            var id = $(control).data("str");
+            id = id.replace("**", localpurchIds);
+            $(control).attr("id", id);
+            $(control).attr("name", id);
+        });
+        localpurchIds++;
+    });
+    
+    var expurchIds = 0;
+    $(".retExPurchRow").each(function () {
+        var retExPurch = this;
+        $(retExPurch).find(".form-control").each(function () {
+            var control = this;
+            var id = $(control).data("str");
+            id = id.replace("**", expurchIds);
+            $(control).attr("id", id);
+            $(control).attr("name", id);
+        });
+        expurchIds++;
+    });
 
 });
 function CheckRetcode(data) {
@@ -128,7 +196,25 @@ $('#transdate').datepicker({
 });
 
 
+
 $(document).ready(function () {
+    $("#saletax").click(function () {
+        if ($("#taxrateid").val() == 14) {
+
+            $("#saletax").val(parseInt($("#saleval").val(), 10) * 0.1);
+            $("#saletax").css({ "color": "green" });
+        }
+    });
+
+    $("#purchtax").click(function () {
+
+        if ($("#taxrate").val() == 14) {
+            $("#purchtax").val(parseInt($("#purchval").val(), 10) * 0.1);
+            $("#purchtax").css({ "color": "green" });
+        }
+    });
+
+    $('.recietdate').datepicker({ dateFormat: 'dd/mm/yy' });
 
     $("#retSaleAdd").on("click", function () {
         var url = $(this).data('request-url');
@@ -142,6 +228,37 @@ $(document).ready(function () {
         $.get(url, function (data) {
             $("#retPurchTbl tbody").append(data);
 
+        });
+    });
+    $("#retCapitalAdd").on("click", function () {
+        var url = $(this).data('request-url');
+        $.get(url, function (data) {
+            $("#retCapitalTbl tbody").append(data);
+
+        });
+    });
+
+    $("#retReceitAdd").on("click", function () {
+        var url = $(this).data('request-url');
+        $.get(url, function (data) {
+            $("#retReceitTbl tbody").append(data);
+
+        });
+        
+    });
+
+    $("#retLocalPurchAdd").on("click", function () {
+        var url = $(this).data('request-url');
+        $.get(url, function (data) {
+            $("#retLocalPurchTbl tbody").append(data);
+            $('.recietdate').datepicker({ dateFormat: 'dd/mm/yy' });
+        });
+    });
+
+    $("#retExPurchAdd").on("click", function () {
+        var url = $(this).data('request-url');
+        $.get(url, function (data) {
+            $("#retExPurchTbl tbody").append(data);
         });
     });
 
@@ -183,7 +300,7 @@ $(document).ready(function () {
 
         }
     });
-    nettaxpy
+    //nettaxpy
     $("#nettaxpy").click(function () {
         $("#nettaxpy").val(parseInt($("#saleltc").val(), 10) - parseInt($("#purctdt2").val(), 10));
 

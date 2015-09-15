@@ -9,6 +9,12 @@
         <tr>
             <th>@Html.DisplayNameFor(model => model.taxrateid)</th>
             <th>
+                @Html.DisplayNameFor(model => model.goodval)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.serviceval)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.saleval)
             </th>
             <th>
@@ -37,7 +43,7 @@
     </tr>
 </table>
 
-<script>
+@*<script>
     $(document).ready(function () {
         $("#saletax").click(function () {
             if ($("#taxrateid").val() == 14) {
@@ -48,4 +54,4 @@
         });
      
     });
-</script>
+</script>*@

@@ -71,6 +71,10 @@
     <Compile Include="Enum.cs" />
     <Compile Include="Master.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RetExPurch.cs" />
+    <Compile Include="RetLocalPurch.cs" />
+    <Compile Include="RetReceit.cs" />
+    <Compile Include="RetCapital.cs" />
     <Compile Include="Retpurch.cs" />
     <Compile Include="Retsale.cs" />
     <Compile Include="Returns.cs" />

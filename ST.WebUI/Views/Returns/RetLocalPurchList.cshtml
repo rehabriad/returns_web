@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ST.Entity.RetLocalPurch>
+
+@{
+    var i = 0;
+}
+
+
+<table id="retLocalPurchTbl" class="table table-striped table-bordered table-hover table-responsive" >
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.supplyname)</th>
+        <th>
+            @Html.DisplayNameFor(model => model.rin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deppurch)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nondispurch)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.indeppurch)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.taxrateid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vattax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recietserial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recietdate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        ViewBag.Rowcount = i;
+        @Html.Partial("_RetLocalPurchSingle", item)
+        i++;
+    }
+</table>
+
+<table>
+    <tr>
+        <td>
+            <a id="retLocalPurchAdd" data-request-url="@Url.Action("AddRetLocalPurch", "returns")" class="btn btn-default">@ST.Resource.ReturnsResource.viewRetLocalPurchListAddLocalPurch</a>
+        </td>
+    </tr>
+</table>

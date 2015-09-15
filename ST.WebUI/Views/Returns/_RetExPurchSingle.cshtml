@@ -1,0 +1,59 @@
+﻿@model ST.Entity.RetExPurch
+
+@{
+    Layout = null;
+    
+}
+    <tr class="retExPurchRow">
+        <td>
+            @Html.Hidden("retexpurch.Id", Model.Id, new { @class = "form-control", data_str = "retexpurch[**].Id" })
+            @Html.Hidden("retexpurch.returnsid", Model.returnsid, new { @class = "form-control", data_str = "retexpurch[**].returnsid" })
+
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.recietcode, new { @class = "form-control", data_str = "retexpurch[**].recietcode" })
+                    @Html.ValidationMessageFor(model => model.recietcode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.certno, new { @class = "form-control", data_str = "retexpurch[**].certno" })
+                    @Html.ValidationMessageFor(model => model.certno, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.totalvalue, new { @class = "form-control", data_str = "retexpurch[**].totalvalue" })
+                    @Html.ValidationMessageFor(model => model.totalvalue, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.taxrateid, new { @class = "form-control", data_str = "retexpurch[**].taxrateid" })
+                    @Html.ValidationMessageFor(model => model.taxrateid, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.tax, new { @class = "form-control", data_str = "retexpurch[**].tax" })
+                    @Html.ValidationMessageFor(model => model.tax, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </td>
+        <td>
+            <input type="button" class="retexpurch-del" value="إلغاء" />
+        </td>
+    </tr>
