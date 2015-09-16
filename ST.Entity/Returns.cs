@@ -16,6 +16,7 @@ namespace ST.Entity
             retcapital=new List<RetCapital>();
             retreceit=new List<RetReceit>();
             retlocalpurch=new List<RetLocalPurch>();
+            retexpurch=new List<RetExPurch>();
             moddate = DateTime.Now;
             transdate = DateTime.Now;
             taxyrmo = DateTime.Now.AddMonths(-1);
