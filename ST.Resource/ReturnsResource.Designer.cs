@@ -160,7 +160,7 @@ namespace ST.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to بيان مشتريات مستورد.
+        ///   Looks up a localized string similar to بيان مدخلات مستورد.
         /// </summary>
         public static string viewCreateOrEditExPurches {
             get {
@@ -178,7 +178,7 @@ namespace ST.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to بيان مشتريات محلي.
+        ///   Looks up a localized string similar to بيان مدخلات محلي.
         /// </summary>
         public static string viewCreateOrEditLocalPurches {
             get {

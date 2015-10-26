@@ -48,7 +48,7 @@
             <div class="form-group">
 
                 <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.purchtax, new { @class = "form-control", data_str = "retpurch[**].purchtax" })
+                    @Html.TextBoxFor(model => model.purchtax, new { @class = "form-control purchtax", data_str = "retpurch[**].purchtax" })
                     @Html.ValidationMessageFor(model => model.purchtax, "", new { @class = "text-danger" })
                 </div>
             </div>

@@ -29,11 +29,11 @@ namespace ST.Entity
         public string supplyname{ get; set; }
         [Display(Name = "رقم التسجيل")]
         public string rin { get; set; }
-        [Display(Name = "خاضع")]
+        [Display(Name = "سلع")]
         public decimal deppurch { get; set; }
-        [Display(Name = "معفى")]
+        [Display(Name = "خدمة")]
         public decimal nondispurch { get; set; }
-        [Display(Name = "غير قابل للخصم")]
+        [Display(Name = "سلع رأس مالية")]
         public decimal indeppurch{ get; set; }
         [Display(Name = "فئة الضريبة")]
         public localtaxrate taxrateid { get; set; }

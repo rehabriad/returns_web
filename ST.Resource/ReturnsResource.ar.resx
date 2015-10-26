@@ -121,10 +121,10 @@
     <value>رقم الوثيقة</value>
   </data>
   <data name="nettaxpyDisplayName" xml:space="preserve">
-    <value>صافى الضريبة</value>
+    <value>الضريبة المستحقة</value>
   </data>
   <data name="purctdt2DisplayName" xml:space="preserve">
-    <value>ضريبة المشتريات</value>
+    <value>ضريبة المدخلات</value>
   </data>
   <data name="RequiredMessage" xml:space="preserve">
     <value>يجب ادخال {0}.</value>
@@ -146,7 +146,7 @@
     <value>إقرار مبيعات</value>
   </data>
   <data name="viewCreateOrEditPurch" xml:space="preserve">
-    <value>التوريدات</value>
+    <value>المبيعات</value>
   </data>
   <data name="viewCreateOrEditSales" xml:space="preserve">
     <value>المدخلات</value>
@@ -179,7 +179,7 @@
     <value>إضافة مدخلات</value>
   </data>
   <data name="viewRetPurchListAddSales" xml:space="preserve">
-    <value>إضافة توريدات</value>
+    <value>إضافة مبيعات</value>
   </data>
   <data name="rinError" xml:space="preserve">
     <value>لا يمكن ادخال اقرار لنفس الفتره</value>
@@ -200,7 +200,10 @@
     <value>الفواتير</value>
   </data>
     <data name="viewCreateOrEditLocalPurches" xml:space="preserve">
-    <value>بيان مشتريات محلي</value>
+    <value>بيان مدخلات محلي</value>
+  </data>
+  <data name="viewCreateOrEditExPurches" xml:space="preserve">
+    <value>بيان مدخلات مستورد</value>
   </data>
   <data name="viewRetCapitalListAddCapital" xml:space="preserve">
     <value>إضافة ضريبة سلع رأسمالية</value>
@@ -209,6 +212,6 @@
     <value>إضافة فواتير</value>
   </data>
 <data name="viewRetLocalPurchListAddLocalPurch" xml:space="preserve">
-    <value>إضافة بيان مشتريات محلي</value>
+    <value>إضافة بيان مدخلات محلي</value>
   </data>
 </root>

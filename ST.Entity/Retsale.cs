@@ -25,14 +25,14 @@ namespace ST.Entity
         Returns returns { get; set; }
         [Display(Name = "فئة الضريبة")]
         public taxrateid taxrateid { get; set; }
-        [Display(Name = "السلعة")]
+        [Display(Name = "قيمة السلع")]
         public decimal goodval { get; set; }
-        [Display(Name = "الخدمات")]
+        [Display(Name = "قيمة الخدمات")]
         public decimal serviceval { get; set; }
 
         [Display(Name = "اجمالي القيمة")]
         public decimal saleval { get; set; }
-        [Display(Name = "ضريبة القيمة المضافة")]
+        [Display(Name = "ضريبة المبيعات")]
         public decimal saletax { get; set; }
 
         public int targetoffid { get; set; }

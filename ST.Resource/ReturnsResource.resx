@@ -200,10 +200,10 @@
     <value>الفواتير</value>
   </data>
   <data name="viewCreateOrEditLocalPurches" xml:space="preserve">
-    <value>بيان مشتريات محلي</value>
+    <value>بيان مدخلات محلي</value>
   </data>
   <data name="viewCreateOrEditExPurches" xml:space="preserve">
-    <value>بيان مشتريات مستورد</value>
+    <value>بيان مدخلات مستورد</value>
   </data>
   <data name="viewRetCapitalListAddCapital" xml:space="preserve">
     <value>إضافة ضريبة سلع رأسمالية</value>

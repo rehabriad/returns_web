@@ -35,7 +35,7 @@ $("#frm-returns").on("submit",function(e) {
     var retIds = 0;
 
     if (parseInt($("#nettaxpy").val(), 10) != parseInt($("#saleltc").val(), 10) - parseInt($("#purctdt2").val(), 10)) {
-        if (confirm("قيمة صافى الضريبة لا تساوى الفرق بين قيمة المبيعات و قيمة المشتريات ..هل تريد الأستمرار فى الحفظ?")==false) {
+        if (confirm("قيمة صافى الضريبة لا تساوى الفرق بين قيمة المبيعات و قيمة المدخلات ..هل تريد الأستمرار فى الحفظ?")==false) {
             return false;
         }
     }
@@ -206,6 +206,17 @@ $(document).ready(function () {
         }
     });
 
+    //$(".salestax").on("change",function () {
+    //    var totalsalestax = 0;
+    //    $(".saletax").each(function () {
+    //        totalsalestax += parseInt($(this).val(), 10);
+    //        console.log(totalsalestax);
+    //    });
+    //    console.log(totalsalestax);
+    //    $("#saleltc").val(totalsalestax);
+    //    $("#nettaxpy").val(parseInt($("#saleltc").val(), 10) - parseInt($("#purctdt2").val(), 10));
+    //});
+
     $("#purchtax").click(function () {
 
         if ($("#taxrate").val() == 14) {
@@ -213,6 +224,15 @@ $(document).ready(function () {
             $("#purchtax").css({ "color": "green" });
         }
     });
+
+    //$(".purchtax").change(function () {
+    //    var totalpurchtax = 0;
+    //    $(".purchtax").each(function () {
+    //        totalpurchtax += parseInt($(this).val(), 10);
+    //    });
+    //    $("#purctdt2").val(totalpurchtax);
+    //    $("#nettaxpy").val(parseInt($("#saleltc").val(), 10) - parseInt($("#purctdt2").val(), 10));
+    //});
 
     $('.recietdate').datepicker({ dateFormat: 'dd/mm/yy' });
 
@@ -301,7 +321,12 @@ $(document).ready(function () {
         }
     });
     //nettaxpy
-    $("#nettaxpy").click(function () {
+    $("#saleltc").change(function () {
+        $("#nettaxpy").val(parseInt($("#saleltc").val(), 10) - parseInt($("#purctdt2").val(), 10));
+
+        $("#nettaxpy").css({ "color": "green" });
+    });
+    $("#purctdt2").change(function () {
         $("#nettaxpy").val(parseInt($("#saleltc").val(), 10) - parseInt($("#purctdt2").val(), 10));
 
         $("#nettaxpy").css({ "color": "green" });
@@ -312,6 +337,13 @@ $(document).ready(function () {
 
         }
     });
+
+    $("#purchtax").click(function () {
+        $("#nettaxpy").val(parseInt($("#saleltc").val(), 10) - parseInt($("#purctdt2").val(), 10));
+
+        $("#nettaxpy").css({ "color": "green" });
+    });
+    
 
     jQuery("#saleltc").blur(function () {
         $("#nettaxpy").val(parseInt($("#saleltc").val(), 10) - parseInt($("#purctdt2").val(), 10));
