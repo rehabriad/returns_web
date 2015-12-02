@@ -10,7 +10,7 @@ namespace ST.Entity
 {
     public class RetReceit
     {
-        public enum Receiptcodes { فواتير_ضريبية=1,إشعارات_إضافية=2,إشعارات_خصم=3,اخرى_تذكرة=4  }
+        public enum Receiptcodes { فواتير_ضريبية=1,إشعارات_إضافية=2,إشعارات_خصم=3,اخرى_تذكرة=4, عدد_فواتير_الشراء=5, عدد_أذون_الإفراج=6  }
 
         public RetReceit()
         {

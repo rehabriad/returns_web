@@ -26,6 +26,8 @@ namespace ST.Entity
             saleltc = 0;
             nettaxpy = 0;
             purctdt2 = 0;
+            noretsale = 0;
+            noretpurch = 0;
             status = ReturnStatus.Pending;
         }
 
@@ -83,6 +85,14 @@ namespace ST.Entity
 
         [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
         public ReturnStatus status { get; set; }
+
+        [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
+        [Display(Name = "noretsaleDisplayName", ResourceType = typeof(ST.Resource.ReturnsResource))]
+        public decimal noretsale { get; set; }
+        
+        [Required(ErrorMessageResourceName = "RequiredMessage", ErrorMessageResourceType = typeof(ST.Resource.ReturnsResource))]
+        [Display(Name = "noretpurchDisplayName", ResourceType = typeof(ST.Resource.ReturnsResource))]
+        public decimal noretpurch { get; set; }
 
         public virtual ICollection<Retsale> retsale { get; set; }
         public virtual ICollection<Retpurch> retpurch { get; set; }

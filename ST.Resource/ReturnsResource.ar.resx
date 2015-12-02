@@ -199,7 +199,7 @@
   <data name="viewCreateOrEditReceits" xml:space="preserve">
     <value>الفواتير</value>
   </data>
-    <data name="viewCreateOrEditLocalPurches" xml:space="preserve">
+  <data name="viewCreateOrEditLocalPurches" xml:space="preserve">
     <value>بيان مدخلات محلي</value>
   </data>
   <data name="viewCreateOrEditExPurches" xml:space="preserve">
@@ -211,7 +211,13 @@
   <data name="viewRetReceitListAddReceit" xml:space="preserve">
     <value>إضافة فواتير</value>
   </data>
-<data name="viewRetLocalPurchListAddLocalPurch" xml:space="preserve">
+  <data name="viewRetLocalPurchListAddLocalPurch" xml:space="preserve">
     <value>إضافة بيان مدخلات محلي</value>
+  </data>
+  <data name="noretpurchDisplayName" xml:space="preserve">
+    <value>إجمالي المشتريات خلال العام</value>
+  </data>
+  <data name="noretsaleDisplayName" xml:space="preserve">
+    <value>إجمالي إيرادات السنة المالية</value>
   </data>
 </root>

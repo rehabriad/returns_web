@@ -217,4 +217,10 @@
   <data name="viewRetExPurchListAddExPurch" xml:space="preserve">
     <value>إضافة بيان مشتريات مستورد</value>
   </data>
+  <data name="noretpurchDisplayName" xml:space="preserve">
+    <value>إجمالي المشتريات خلال العام</value>
+  </data>
+  <data name="noretsaleDisplayName" xml:space="preserve">
+    <value>إجمالي إيرادات السنة المالية</value>
+  </data>
 </root>

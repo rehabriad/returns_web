@@ -58,7 +58,7 @@ namespace ST.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,officeid,rin,returncode,taxyrmo,transdate,saleltc,purctdt2,nettaxpy,targetoffid,docLocNumber,moddate,status,retsale,retpurch,retcapital,retreceit,retlocalpurch,retexpurch")] Returns returns)
+        public async Task<ActionResult> Create([Bind(Include = "Id,officeid,rin,returncode,taxyrmo,transdate,saleltc,purctdt2,nettaxpy,targetoffid,docLocNumber,moddate,status,retsale,retpurch,retcapital,retreceit,retlocalpurch,retexpurch,noretsale,noretpurch")] Returns returns)
         {
 
             if (ModelState.IsValid)
@@ -102,7 +102,7 @@ namespace ST.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,officeid,rin,returncode,taxyrmo,transdate,saleltc,purctdt2,nettaxpy,targetoffid,moddate,status,docLocNumber,retsale,retpurch,retcapital,retreceit,retlocalpurch,retexpurch")] Returns returns)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,officeid,rin,returncode,taxyrmo,transdate,saleltc,purctdt2,nettaxpy,targetoffid,moddate,status,docLocNumber,retsale,retpurch,retcapital,retreceit,retlocalpurch,retexpurch,noretsale,noretpurch")] Returns returns)
         {
             if (ModelState.IsValid)
             {

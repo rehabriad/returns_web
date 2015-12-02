@@ -79,6 +79,24 @@ namespace ST.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to إجمالي المشتريات خلال العام.
+        /// </summary>
+        public static string noretpurchDisplayName {
+            get {
+                return ResourceManager.GetString("noretpurchDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to إجمالي إيرادات السنة المالية.
+        /// </summary>
+        public static string noretsaleDisplayName {
+            get {
+                return ResourceManager.GetString("noretsaleDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ضريبة المشتريات.
         /// </summary>
         public static string purctdt2DisplayName {
